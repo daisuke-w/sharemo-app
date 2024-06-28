@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_28_032527) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_28_073425) do
+  create_table "notes", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "prompt_id"
+    t.integer "category_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prompt_id"], name: "index_notes_on_prompt_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "prompts", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "category_id", null: false
+    t.string "title", null: false
+    t.text "prompt", null: false
+    t.boolean "is_public", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_prompts_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.text "profile"
@@ -25,4 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_28_032527) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notes", "prompts"
+  add_foreign_key "notes", "users"
+  add_foreign_key "prompts", "users"
 end
