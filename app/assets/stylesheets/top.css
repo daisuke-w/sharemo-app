@@ -1,0 +1,29 @@
+/* ----------------
+ Topページ用のCSS
+---------------- */
+
+.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+/* マウスオーバー時の設定 */
+.btn--orange:hover {
+  color: #fff;
+  background: #ff8630;
+}
+
+/* ボタンの影 */
+.btn--shadow {
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ボタンの形(丸) */
+.btn--circle {
+  border-radius: 50%;
+  line-height: 80px;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+}
