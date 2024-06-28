@@ -33,5 +33,3 @@
 .Ds_Store
 
 *.dio
-
-/config/environments/development.rb
