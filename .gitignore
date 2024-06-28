@@ -33,3 +33,5 @@
 .Ds_Store
 
 *.dio
+
+node_modules/

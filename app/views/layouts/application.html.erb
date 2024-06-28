@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <!-- EasyMDEのCSSを追加 -->
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
   </head>
 
   <body>
@@ -31,5 +33,7 @@
         <span class="mb-3 mb-md-0 text-body-secondary">Copyright © 2024 Myapp All rights reserved.</span>
       </div>
     </footer>
+    <!-- EasyMDEのJSを追加 -->
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
   </body>
 </html>
