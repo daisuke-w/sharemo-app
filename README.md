@@ -11,7 +11,7 @@
 | nickname           | ニックネーム      | string     | null: false                    |
 | email              | メールアドレス    | string     | null: false, unique: true      |
 | encrypted_password | パスワード        | string     | null: false                    |
-| profile            | プロフィール      | string     |                                |
+| profile            | プロフィール      | text       |                                |
 
 ### Association
 
@@ -69,7 +69,7 @@
 | ----------- | ------------ | ---------- | ------------------------------ |
 | user        | ユーザーID    | references | null: false, foreign_key: true |
 | category_id | カテゴリーID  | integer    | null: false                    |
-| title       | タイトル      | text       | null: false                    |
+| title       | タイトル      | string     | null: false                    |
 | prompt      | プロンプト    | text       | null: false                    |
 | is_public   | 公開設定      | boolean    | null: false, default: false    |
 
