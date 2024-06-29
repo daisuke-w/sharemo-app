@@ -35,3 +35,5 @@
 *.dio
 
 node_modules/
+
+.rubocop.yml
