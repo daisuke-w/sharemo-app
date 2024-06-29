@@ -10,6 +10,8 @@
     <%= javascript_importmap_tags %>
     <!-- EasyMDEのCSSを追加 -->
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <!-- シンタックスハイライト用のCSSを追加 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">
   </head>
 
   <body>
@@ -18,22 +20,24 @@
 
       <% if user_signed_in? %>
         <div class="col-md-3 text-end">
-          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary me-2' %>
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary me-3' %>
         </div>
       <% else %>
         <div class="col-md-3 text-end">
           <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-outline-primary me-2' %>
-          <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary me-2' %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary me-3' %>
         </div>
       <% end %>
     </header>
     <%= yield %>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <span class="mb-3 mb-md-0 text-body-secondary">Copyright © 2024 Myapp All rights reserved.</span>
       </div>
     </footer>
     <!-- EasyMDEのJSを追加 -->
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <!-- シンタックスハイライト用のJSを追加 -->
+    <script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>
   </body>
 </html>
