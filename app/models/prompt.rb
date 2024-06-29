@@ -1,4 +1,5 @@
 class Prompt < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   # エラーメッセージ定義
   error_message = "can't be blank"
 
@@ -11,4 +12,5 @@ class Prompt < ApplicationRecord
 
   belongs_to :user
   belongs_to :note
+  belongs_to :category
 end
