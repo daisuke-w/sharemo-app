@@ -1,0 +1,19 @@
+<div class="form-container">
+  <%= form_with(model: note, local: true) do |form| %>
+    <%= form.label :category %>
+    <div class="custom-field">
+      <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>
+      <div class="button-group">
+        <%= link_to 'Edit', '#', class: 'btn btn-primary custom-btn' %>
+        <%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger custom-btn' %>
+        <%= form.submit 'Save', class: 'btn btn-success custom-btn' %>
+      </div>
+    </div>
+
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control custom-input' %>
+
+    <%= form.label :content %>
+    <%= form.text_area :content, id: 'markdown-editor', class: 'form-control' %>
+  <% end %>
+</div>

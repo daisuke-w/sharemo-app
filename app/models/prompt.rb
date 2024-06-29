@@ -1,0 +1,16 @@
+class Prompt < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  # エラーメッセージ定義
+  error_message = "can't be blank"
+
+  with_options presence: true do
+    validates :category_id,       numericality: { other_than: 1, message: error_message }
+    validates :title
+    validates :content
+    validates :is_public
+  end
+
+  belongs_to :user
+  belongs_to :note
+  belongs_to :category
+end
