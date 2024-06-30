@@ -1,5 +1,9 @@
 class NotesController < ApplicationController
 
+  def index
+    @notes = Note.includes(:user, :prompt)
+  end
+
   def new
     @note = Note.new
   end

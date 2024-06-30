@@ -1,0 +1,25 @@
+<div class="notes-container">
+  <% @notes.each do |note| %>
+    <% if note.is_public %>
+      <div class="note-box">
+        <div class="header">
+          <div class="category"><%= note.category[:name] %></div>
+          <div class="type">Note</div>
+        </div>
+        <div class="tags">
+          <% 5.times do |j| %>
+            <span class="tag">Tag <%= j + 1 %></span>
+          <% end %>
+        </div>
+        <div class="title"><%= note.title %></div>
+        <div class="footer">
+          <button class="details-button">詳細</button>
+          <div class="informative">
+            <i class="icon-informative"></i>
+            <span class="informative-count"><%= rand(1..100) %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
