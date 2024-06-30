@@ -33,7 +33,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :prompts
+- belongs_to :prompt
 - has_many :note_tags
 - has_many :tags, through: :note_tags
 
@@ -77,7 +77,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :note
+- has_many :notes
 - has_many :prompt_tags
 - has_many :tags, through: :prompt_tags
 
