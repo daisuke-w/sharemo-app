@@ -11,6 +11,6 @@ class Prompt < ApplicationRecord
   end
 
   belongs_to :user
-  belongs_to :note
+  has_many   :note
   belongs_to :category
 end

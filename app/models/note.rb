@@ -10,6 +10,6 @@ class Note < ApplicationRecord
   end
 
   belongs_to :user
-  has_many   :prompts
+  belongs_to :prompt, optional: true
   belongs_to :category
 end
