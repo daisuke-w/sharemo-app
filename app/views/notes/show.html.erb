@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="side-bar">
+    <%= render partial: "side_bar", locals: { context: :show, note: @note } %>
+  </div>
+  <div class="markdown-area">
+    <% if user_signed_in? && @note.user == current_user %>
+      <div class="custom-field">
+        <div class="button-group">
+          <%= link_to 'Edit', "#", class: 'btn btn-primary custom-btn' %>
+          <%= link_to 'Delete', "#", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger custom-btn' %>
+        </div>
+      </div>
+    <% end %>
+    <h2><%= @note.title %></h2>
+    <div>
+      <strong>Category:</strong> <%= @note.category.name %>
+    </div>
+    <div>
+      <strong>Content:</strong>
+      <div class="markdown-preview"><%= markdown(@note.content) %></div>
+    </div>
+  </div>
+</div>

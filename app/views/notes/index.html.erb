@@ -13,7 +13,7 @@
         </div>
         <div class="title"><%= note.title %></div>
         <div class="footer">
-          <button class="details-button">詳細</button>
+          <%= link_to "詳細", note_path(note), class: "btn details-button" %>
           <div class="informative">
             <i class="icon-informative"></i>
             <span class="informative-count"><%= rand(1..100) %></span>
