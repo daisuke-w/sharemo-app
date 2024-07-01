@@ -87,3 +87,5 @@ gem 'jquery-rails'
 gem 'devise'
 
 gem 'active_hash'
+
+gem 'redcarpet'
