@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     if @note.save
-      redirect_to root_path # TODO 他の画面作成次第変更
+      redirect_to notes_path
     else
       render :new, status: :unprocessable_entity
     end
