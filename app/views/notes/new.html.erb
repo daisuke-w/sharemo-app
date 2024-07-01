@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="side-bar">
-    <%= render "side_bar" %>
+    <%= render partial: "side_bar", locals: { context: :new } %>
   </div>
   <div class="markdown-area">
     <%= render partial: "markdown", locals: { note: @note } %>

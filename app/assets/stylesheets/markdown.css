@@ -19,3 +19,8 @@
   width: 200px;
   margin-right: 10px;
 }
+
+.custom-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

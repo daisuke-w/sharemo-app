@@ -5,36 +5,21 @@
   </ul>
 </div>
 <div class="flex-shrink-0 p-3" style="width: 280px;">
-  <ul class="list-unstyled ps-0">
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-        カテゴリー1
-      </button>
-      <div class="collapse" id="home-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><%= link_to 'hoge', '#', class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-        カテゴリー2
-      </button>
-      <div class="collapse" id="dashboard-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><%= link_to 'hoge', '#', class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-        カテゴリー3
-      </button>
-      <div class="collapse" id="orders-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><%= link_to 'hoge', '#', class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+  <% if context == :show && user_signed_in? && current_user == @note.user %>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          カテゴリー1
+        </button>
+        <div class="collapse" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><%= link_to 'hoge', '#', class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+</div>
+<div class="sidebar-footer">
+  <%= link_to '戻る', notes_path, class: 'btn btn-secondary' %>
 </div>

@@ -4,8 +4,8 @@
     <div class="custom-field">
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>
       <div class="button-group">
-        <%= link_to 'Edit', '#', class: 'btn btn-primary custom-btn' %>
-        <%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger custom-btn' %>
+        <%= link_to 'Edit', '#', class: 'btn btn-primary custom-btn disabled' %>
+        <%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger custom-btn disabled' %>
         <%= form.submit 'Save', class: 'btn btn-success custom-btn' %>
       </div>
     </div>
