@@ -1,6 +1,6 @@
 .wrapper {
+  position: relative;
   display: flex;
-  width: 100%;
 }
 
 .markdown-area {
@@ -11,6 +11,13 @@
 .side-bar {
   width: 200px;
   background-color: #f1f1f1;
+  position: relative;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 .tabs {
