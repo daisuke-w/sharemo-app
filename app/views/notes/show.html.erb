@@ -6,7 +6,7 @@
     <% if user_signed_in? && @note.user == current_user %>
       <div class="custom-field">
         <div class="button-group">
-          <%= link_to 'Edit', "#", class: 'btn btn-primary custom-btn' %>
+          <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-primary custom-btn' %>
           <%= link_to 'Delete', "#", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger custom-btn' %>
         </div>
       </div>
