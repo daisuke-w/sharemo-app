@@ -12,4 +12,9 @@ class Note < ApplicationRecord
   belongs_to :user
   belongs_to :prompt, optional: true
   belongs_to :category
+
+  # is_publicカラムが1の場合に true を返す
+  def public?
+    is_public
+  end
 end
