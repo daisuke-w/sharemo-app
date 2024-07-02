@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :find_note, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_note, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: :edit
 
   def index
@@ -34,6 +34,14 @@ class NotesController < ApplicationController
     end
   end
 
+  def destroy
+    # ログインユーザーとノート保有者が別人の場合はなにもしない
+    return if current_user != @note.user
+
+    @note.destroy
+    redirect_to notes_path
+  end
+
   private
 
   def note_params
@@ -48,7 +56,7 @@ class NotesController < ApplicationController
   end
 
   def move_to_index
-    # ログインユーザーと編集者が別人の場合は一覧ページに遷移
+    # ログインユーザーとノート保有者が別人の場合は一覧ページに遷移
     redirect_to root_path if current_user != @note.user
   end
 end
