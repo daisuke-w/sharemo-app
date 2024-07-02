@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :find_note, only: [:show, :edit, :update]
+  before_action :move_to_index, only: :edit
 
   def index
     @notes = Note.includes(:user, :prompt)
@@ -18,7 +21,17 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @note.update(note_params)
+      redirect_to note_path(@note)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -28,5 +41,14 @@ class NotesController < ApplicationController
     # prompt_idのマージ nullを許容
     permitted_params = permitted_params.merge(prompt_id: params[:prompt_id]) if params[:prompt_id]
     permitted_params
+  end
+
+  def find_note
+    @note = Note.find(params[:id])
+  end
+
+  def move_to_index
+    # ログインユーザーと編集者が別人の場合は一覧ページに遷移
+    redirect_to root_path if current_user != @note.user
   end
 end
