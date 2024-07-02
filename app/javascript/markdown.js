@@ -16,4 +16,22 @@ function initializeEasyMDE() {
   }
 };
 
-window.addEventListener('turbo:load', initializeEasyMDE);
+/**
+ * トグルボタンの変更イベントを監視し、
+ * ラベルのデータ状態を更新する関数
+ */
+function updateToggleStatus() {
+  const toggleInputs = document.querySelectorAll('.toggle-status');
+
+  toggleInputs.forEach(function(input) {
+    input.addEventListener('change', function() {
+      const label = input.nextElementSibling;
+      label.dataset.state = input.checked ? 'on' : 'off';
+    });
+  });
+};
+
+window.addEventListener('turbo:load', function() {
+  initializeEasyMDE();
+  updateToggleStatus();
+}); 
