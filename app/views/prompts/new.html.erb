@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="side-bar">
+    <%= render partial: "shared/side_bar", locals: { object: @prompt, context: :new } %>
+  </div>
+  <div class="markdown-area">
+    <%= render partial: "shared/markdown", locals: { object: @prompt } %>
+  </div>
+</div>
