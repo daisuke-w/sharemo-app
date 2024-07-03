@@ -19,4 +19,21 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, extensions)
     markdown.render(text).html_safe
   end
+
+  def dynamic_path(object, action)
+    base_path = case object
+                when Note
+                  'note'
+                when Prompt
+                  'prompt'
+                else
+                  raise "Unknown object type"
+                end
+
+    if (action == :show || action == :destroy)
+      send("#{base_path}_path", object)
+    else
+      send("#{action}_#{base_path}_path", object)
+    end
+  end
 end

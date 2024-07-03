@@ -1,8 +1,8 @@
 <div class="wrapper">
   <div class="side-bar">
-    <%= render partial: "side_bar", locals: { context: :new } %>
+    <%= render partial: "shared/side_bar", locals: { object: @note, context: :new } %>
   </div>
   <div class="markdown-area">
-    <%= render partial: "markdown", locals: { note: @note } %>
+    <%= render partial: "shared/markdown", locals: { object: @note } %>
   </div>
 </div>

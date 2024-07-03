@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_28_073425) do
     t.bigint "user_id", null: false
     t.integer "category_id", null: false
     t.string "title", null: false
-    t.text "prompt", null: false
+    t.text "content", null: false
     t.boolean "is_public", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

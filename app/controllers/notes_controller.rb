@@ -5,6 +5,8 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.includes(:user, :prompt)
+    @prompts = Prompt.includes(:user)
+    @objects = (@notes + @prompts)
   end
 
   def new
@@ -57,6 +59,6 @@ class NotesController < ApplicationController
 
   def move_to_index
     # ログインユーザーとノート保有者が別人の場合は一覧ページに遷移
-    redirect_to root_path if current_user != @note.user
+    redirect_to notes_path if current_user != @note.user
   end
 end

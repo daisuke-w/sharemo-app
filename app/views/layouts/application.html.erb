@@ -23,7 +23,13 @@
       <% if user_signed_in? %>
         <div class="col-md-3 text-end">
           <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary me-2' %>
-          <%= link_to '新規作成', new_note_path, class: 'btn btn-primary me-3' %>
+          <button class="btn btn-primary me-3 dropdown-toggle" type="button" id="create-new-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            新規作成
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="create-new-dropdown">
+            <li><%= link_to 'New Note', new_note_path, class: 'dropdown-item' %></li>
+            <li><%= link_to 'New Prompt', new_prompt_path, class: 'dropdown-item' %></li>
+          </ul>
         </div>
       <% else %>
         <div class="col-md-3 text-end">
