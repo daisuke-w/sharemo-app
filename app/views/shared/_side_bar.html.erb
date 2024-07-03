@@ -1,11 +1,12 @@
 <div class="side-bar-header">
   <ul class="tabs">
-    <li><button id="note-tab" class="tab active">note</button></li>
-    <li><button id="prompt-tab" class="tab">prompt</button></li>
+    <li><%= link_to 'note', new_note_path, id: 'note-tab', class: "tab #{controller_name == 'notes' ? 'active' : ''}" %></li>
+    <li><%= link_to 'prompt', new_prompt_path, id: 'prompt-tab', class: "tab #{controller_name == 'prompts' ? 'active' : ''}" %></li>
   </ul>
 </div>
+
 <div class="flex-shrink-0 p-3" style="width: 280px;">
-  <% if (context == :show || context == :edit) && user_signed_in? && current_user == @note.user %>
+  <% if (context == :show || context == :edit) && user_signed_in? && current_user == object.user %>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">

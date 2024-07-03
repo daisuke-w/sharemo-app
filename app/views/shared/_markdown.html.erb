@@ -1,5 +1,5 @@
 <div class="form-container">
-  <%= form_with(model: note, local: true) do |form| %>
+  <%= form_with(model: object, local: true) do |form| %>
     <%= form.label :category %>
     <div class="custom-field">
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>
@@ -9,7 +9,7 @@
           <span class="toggle-label"
                 data-on="Public"
                 data-off="Private"
-                data-state="<%= @note&.public? ? 'on' : 'off' %>"></span>
+                data-state="<%= object&.public? ? 'on' : 'off' %>"></span>
         </label>
       </div>
       <div class="button-group">
