@@ -23,11 +23,12 @@
   right: 10px;
 }
 
+/** note promptボタン用 **/
 .tabs {
   display: flex;
   list-style: none;
   padding: 15px;
-  margin: 0;
+  margin-top: 10px;
 }
 
 .tab {
@@ -37,13 +38,22 @@
   width: 100%;
   text-align: center;
   box-sizing: border-box;
+  text-decoration: none;
+  color: black;
 }
 
 .tab.active {
-  background-color: #ddd;
+  background-color: #6c757d;
   font-weight: bold;
+  color: white;
+  pointer-events: none;
 }
 
+.tab a:hover {
+  color: var(--bs-info-rgb);
+}
+
+/** カテゴリー用 **/
 .btn-toggle {
   padding: .25rem .5rem;
   font-weight: 600;
@@ -72,6 +82,7 @@
 .btn-toggle[aria-expanded="true"] {
   color: rgba(var(--bs-emphasis-color-rgb), .85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }

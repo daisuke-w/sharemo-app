@@ -34,12 +34,27 @@
   align-items: center;
 }
 
-.category, .type {
+.category {
   font-size: 12px;
   background-color: #eee;
   border-radius: 15px;
   padding: 5px 10px;
   display: inline-block;
+}
+
+.type {
+  font-size: 12px;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-block;
+}
+
+.type[data-obj="Note"] {
+  background-color: #cff4fc;
+}
+
+.type[data-obj="Prompt"] {
+  background-color: #f8d7da;
 }
 
 .tags {
