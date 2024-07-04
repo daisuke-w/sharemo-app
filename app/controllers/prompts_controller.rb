@@ -5,12 +5,13 @@ class PromptsController < ApplicationController
   before_action :prompts_by_category, only: [:show, :edit]
 
   def new
-    @prompt = Prompt.new
+    @prompt_form = PromptForm.new
   end
 
   def create
-    @prompt = Prompt.new(prompt_params)
-    if @prompt.save
+    @prompt_form = PromptForm.new(prompt_form_params)
+    if @prompt_form.valid?
+      @prompt_form.save
       redirect_to notes_path
     else
       render :new, status: :unprocessable_entity
@@ -21,11 +22,16 @@ class PromptsController < ApplicationController
   end
 
   def edit
+    prompt_attributes = @prompt.attributes
+    @prompt_form = PromptForm.new(prompt_attributes)
   end
 
   def update
-    if @prompt.update(prompt_params)
-      redirect_to note_path(@prompt)
+    @prompt_form = PromptForm.new(prompt_form_params)
+    binding.pry
+    if @prompt_form.valid?
+      @prompt_form.update(prompt_form_params, @prompt)
+      redirect_to prompt_path(@prompt)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,8 +47,8 @@ class PromptsController < ApplicationController
 
   private
 
-  def prompt_params
-    params.require(:prompt).permit(:title, :content, :category_id, :is_public).merge(user_id: current_user.id)
+  def prompt_form_params
+    params.require(:prompt_form).permit(:title, :content, :category_id, :is_public).merge(user_id: current_user.id)
   end
 
   def find_prompt
@@ -55,6 +61,6 @@ class PromptsController < ApplicationController
   end
 
   def prompts_by_category
-    @prompts_by_category = current_user.prompts.group_by(&:category)
+    @prompts_by_category = current_user&.prompts&.group_by(&:category)
   end
 end
