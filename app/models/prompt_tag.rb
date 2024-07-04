@@ -1,0 +1,2 @@
+class PromptTag < ApplicationRecord
+end
