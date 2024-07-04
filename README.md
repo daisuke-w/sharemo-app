@@ -68,7 +68,7 @@
 | user        | ユーザーID    | references | null: false, foreign_key: true |
 | category_id | カテゴリーID  | integer    | null: false                    |
 | title       | タイトル      | string     | null: false                    |
-| prompt      | プロンプト    | text       | null: false                    |
+| content     | 内容          | text       | null: false                    |
 | is_public   | 公開設定      | boolean    | null: false, default: false    |
 
 
