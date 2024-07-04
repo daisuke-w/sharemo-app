@@ -1,26 +1,51 @@
 <div class="side-bar-header">
   <ul class="tabs">
-    <li><%= link_to 'note', new_note_path, id: 'note-tab', class: "tab #{controller_name == 'notes' ? 'active' : ''}" %></li>
-    <li><%= link_to 'prompt', new_prompt_path, id: 'prompt-tab', class: "tab #{controller_name == 'prompts' ? 'active' : ''}" %></li>
+    <li><%= link_to 'Note', new_note_path, id: 'note-tab', class: "tab #{controller_name == 'notes' ? 'active' : ''}" %></li>
+    <li><%= link_to 'Prompt', new_prompt_path, id: 'prompt-tab', class: "tab #{controller_name == 'prompts' ? 'active' : ''}" %></li>
   </ul>
 </div>
 
-<div class="flex-shrink-0 p-3" style="width: 280px;">
+<div class="flex-shrink-0 p-3">
   <% if (context == :show || context == :edit) && user_signed_in? && current_user == object.user %>
     <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-          カテゴリー1
-        </button>
-        <div class="collapse" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><%= link_to 'hoge', '#', class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %></li>
-          </ul>
-        </div>
-      </li>
+      <% if controller_name == 'notes' %>
+        <% @notes_by_category.each do |category, notes| %>
+          <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#category-<%= category.id %>-collapse" aria-expanded="false">
+              <%= category.name %>
+            </button>
+            <div class="collapse" id="category-<%= category.id %>-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <% notes.each do |note| %>
+                  <li>
+                    <%= link_to note.title, note_path(note), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        <% end %>
+      <% elsif controller_name == 'prompts' %>
+        <% @prompts_by_category.each do |category, prompts| %>
+          <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#category-<%= category.id %>-collapse" aria-expanded="false">
+              <%= category.name %>
+            </button>
+            <div class="collapse" id="category-<%= category.id %>-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <% prompts.each do |prompt| %>
+                  <li>
+                    <%= link_to prompt.title, prompt_path(prompt), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
     </ul>
   <% end %>
 </div>
 <div class="sidebar-footer">
-  <%= link_to '戻る', notes_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Back', notes_path, class: 'btn btn-secondary' %>
 </div>

@@ -15,6 +15,7 @@
   width: 200px;
   background-color: #f1f1f1;
   position: relative;
+  padding-bottom: 50px;
 }
 
 .sidebar-footer {
@@ -91,9 +92,23 @@
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: 1.25rem;
+  display: block;
+  width: calc(100% - 1.75rem);
 }
 
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
+}
+
+.link-body-emphasis {
+  color: #000;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.link-body-emphasis:hover {
+  text-decoration: underline;
 }

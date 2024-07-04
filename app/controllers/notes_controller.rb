@@ -2,6 +2,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_note, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: :edit
+  before_action :notes_by_category, only: [:show, :edit]
 
   def index
     @notes = Note.includes(:user, :prompt)
@@ -60,5 +61,9 @@ class NotesController < ApplicationController
   def move_to_index
     # ログインユーザーとノート保有者が別人の場合は一覧ページに遷移
     redirect_to notes_path if current_user != @note.user
+  end
+
+  def notes_by_category
+    @notes_by_category = current_user.notes.group_by(&:category)
   end
 end
