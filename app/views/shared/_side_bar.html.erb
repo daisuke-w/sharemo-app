@@ -6,7 +6,7 @@
 </div>
 
 <div class="flex-shrink-0 p-3">
-  <% if (context == :show || context == :edit) && user_signed_in? && current_user == object.user_id %>
+  <% if (context == :show || context == :edit) && user_signed_in? && current_user.id == object.user_id %>
     <ul class="list-unstyled ps-0">
       <% if controller_name == 'notes' %>
         <% @notes_by_category.each do |category, notes| %>
