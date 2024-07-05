@@ -25,8 +25,12 @@ function updateToggleStatus() {
   const toggleInputs = document.querySelectorAll('.toggle-status');
   if (toggleInputs) {
     toggleInputs.forEach(function(input) {
+      // ページロード時に初期状態を設定
+      const label = input.nextElementSibling;
+      label.dataset.state = input.checked ? 'on' : 'off';
+
+      // 状態が変更されたときにラベルを更新
       input.addEventListener('change', function() {
-        const label = input.nextElementSibling;
         label.dataset.state = input.checked ? 'on' : 'off';
       });
     });
@@ -42,3 +46,4 @@ document.addEventListener('turbo:render', function() {
   initializeEasyMDE();
   updateToggleStatus();
 });
+
