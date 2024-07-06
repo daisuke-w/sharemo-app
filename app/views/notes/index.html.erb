@@ -20,9 +20,12 @@
         <div class="title"><%= object.title %></div>
         <div class="footer">
           <%= link_to "Detail", dynamic_path(object, :show), class: 'btn details-button' %>
-          <div class="informative">
-            <i class="icon-informative"></i>
-            <span class="informative-count"><%= rand(1..100) %></span>
+          <div class="informative"
+               data-reference-id="<%= object.reference&.id %>"
+               data-reference-type="<%= object.class.model_name.name %>"
+               data-id="<%= object.id %>">
+            <i class="bi bi-lightbulb icon-informative"></i>
+            <span class="informative-count"><%= object.reference&.click_count || 0 %></span>
           </div>
         </div>
       </div>
