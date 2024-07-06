@@ -16,7 +16,6 @@
 - has_many :notes
 - has_many :prompts
 
-
 ## notes テーブル
 
 | Column      | LogicName    | Type       | Options                        |
@@ -34,14 +33,13 @@
 - belongs_to :prompt
 - has_many :note_tags
 - has_many :tags, through: :note_tags
-
+- has_many :references, as: :referencable
 
 ## tags テーブル
 
 | Column     | LogicName    | Type       | Options                        |
 | ---------- | ------------ | ---------- | ------------------------------ |
 | name       | タグ名       | string     | null: false                    |
-
 
 ### Association
 
@@ -60,7 +58,6 @@
 - belongs_to :note
 - belongs_to :tag
 
-
 ## prompts テーブル
 
 | Column      | LogicName    | Type       | Options                        |
@@ -71,13 +68,13 @@
 | content     | 内容          | text       | null: false                    |
 | is_public   | 公開設定      | boolean    | null: false, default: false    |
 
-
 ### Association
 
 - belongs_to :user
 - has_many :notes
 - has_many :prompt_tags
 - has_many :tags, through: :prompt_tags
+- has_many :references, as: :referencable
 
 ## prompt_tags テーブル (中間テーブル)
 
@@ -90,3 +87,15 @@
 
 - belongs_to :note
 - belongs_to :tag
+
+## references テーブル
+
+| Column            | LogicName      | Type      | Options            |
+| ----------------- | -------------- | --------- | ------------------ |
+| referencable_type | Note or Prompt | string    | null: false        |
+| referencable_id   | 参考ID         | bigint    | null: false, index |
+| click_count       | クリック数     | integer   | default: 0         |
+
+### Association
+
+- belongs_to :referencable, polymorphic: true
