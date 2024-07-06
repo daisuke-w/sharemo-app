@@ -27,10 +27,10 @@ module ApplicationHelper
                 when Prompt
                   'prompt'
                 else
-                  raise "Unknown object type"
+                  raise 'Unknown object type'
                 end
 
-    if (action == :show || action == :destroy)
+    if [:show, :destroy].include?(action)
       send("#{base_path}_path", object)
     else
       send("#{action}_#{base_path}_path", object)
