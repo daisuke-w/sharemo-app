@@ -1,5 +1,5 @@
 <div class="form-container">
-  <%= form_with(model: object, local: true) do |form| %>
+  <%= form_with model: object, url: url, method: method, local: true do |form| %>
     <%= form.label :category %>
     <div class="custom-field">
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>
@@ -19,6 +19,10 @@
 
     <%= form.label :title %>
     <%= form.text_field :title, class: 'form-control custom-input' %>
+
+    <%= form.label :tags %>
+    <%= form.text_field :name, name: "#{form.object_name}[name]", class: 'form-control custom-input-tag' %>
+    <div id="search-result" class="list-group"></div>
 
     <%= form.label :content %>
     <%= form.text_area :content, id: 'markdown-editor', class: 'form-control' %>

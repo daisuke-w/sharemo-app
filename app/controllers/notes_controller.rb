@@ -5,18 +5,19 @@ class NotesController < ApplicationController
   before_action :notes_by_category, only: [:show, :edit]
 
   def index
-    @notes = Note.includes(:user, :prompt)
-    @prompts = Prompt.includes(:user)
-    @objects = (@notes + @prompts)
+    @notes = Note.includes(:user, :prompt, :tags).order(created_at: :desc)
+    @prompts = Prompt.includes(:user, :notes, :tags).order(created_at: :desc)
+    @objects = (@notes + @prompts).sort_by(&:created_at).reverse
   end
 
   def new
-    @note = Note.new
+    @note_form = NoteForm.new
   end
 
   def create
-    @note = Note.new(note_params)
-    if @note.save
+    @note_form = NoteForm.new(note_form_params)
+    if @note_form.valid?
+      @note_form.save
       redirect_to notes_path
     else
       render :new, status: :unprocessable_entity
@@ -24,13 +25,20 @@ class NotesController < ApplicationController
   end
 
   def show
+    # 非公開ノートには所有者以外アクセスできないようにする
+    redirect_to notes_path if !@note.is_public && (current_user.nil? || current_user != @note.user)
   end
 
   def edit
+    note_attributes = @note.attributes
+    @note_form = NoteForm.new(note_attributes)
+    @note_form.name = @note.tags.pluck(:name).join(',')
   end
 
   def update
-    if @note.update(note_params)
+    @note_form = NoteForm.new(note_form_params)
+    if @note_form.valid?
+      @note_form.update(note_form_params, @note)
       redirect_to note_path(@note)
     else
       render :edit, status: :unprocessable_entity
@@ -47,10 +55,14 @@ class NotesController < ApplicationController
 
   private
 
-  def note_params
-    permitted_params = params.require(:note).permit(:title, :content, :category_id, :is_public).merge(user_id: current_user.id)
+  def note_form_params
+    permitted_params = params.require(:note_form)
+                             .permit(:title, :content, :category_id, :is_public, :name)
+                             .merge(user_id: current_user.id)
     # prompt_idのマージ nullを許容
     permitted_params = permitted_params.merge(prompt_id: params[:prompt_id]) if params[:prompt_id]
+    # 末尾のカンマと空白を除去する
+    permitted_params[:name] = permitted_params[:name].chomp(', ')
     permitted_params
   end
 
@@ -64,6 +76,6 @@ class NotesController < ApplicationController
   end
 
   def notes_by_category
-    @notes_by_category = current_user.notes.group_by(&:category)
+    @notes_by_category = current_user&.notes&.group_by(&:category)
   end
 end

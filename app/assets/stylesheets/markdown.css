@@ -73,3 +73,34 @@
   left: 80%;
   transform: translate(-50%, -50%);
 }
+
+/** Tag入力フォーム用 **/
+.custom-input-tag {
+  margin-bottom: 15px;
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#search-result {
+  margin-top: 10px;
+  width: 15%;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.child {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.child:last-child {
+  border-bottom: none;
+}
+
+.child:hover {
+  background-color: #f0f0f0;
+}
