@@ -4,6 +4,6 @@ class Prompt < ApplicationRecord
   belongs_to :user
   has_many   :notes
   belongs_to :category
-  has_many   :prompt_tags
+  has_many   :prompt_tags, dependent: :destroy
   has_many   :tags, through: :prompt_tags
 end
