@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_04_113056) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_06_065217) do
   create_table "note_tags", charset: "utf8", force: :cascade do |t|
     t.bigint "note_id", null: false
     t.bigint "tag_id", null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_04_113056) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_prompts_on_user_id"
+  end
+
+  create_table "references", charset: "utf8", force: :cascade do |t|
+    t.integer "click_count", default: 0
+    t.string "referencable_type"
+    t.bigint "referencable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["referencable_type", "referencable_id"], name: "index_references_on_referencable"
   end
 
   create_table "tags", charset: "utf8", force: :cascade do |t|

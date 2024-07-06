@@ -98,11 +98,15 @@
 }
 
 .icon-informative::before {
-  content: '\1F4A1';
   margin-right: 5px;
-  font-style: normal;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .informative-count {
-  font-size: 14px;
+  font-size: 18px;
+}
+
+.bi-lightbulb-fill {
+  color: yellow;
 }

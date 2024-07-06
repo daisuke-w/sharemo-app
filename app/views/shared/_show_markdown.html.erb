@@ -1,6 +1,13 @@
 <% if user_signed_in? && object.user == current_user %>
   <div class="custom-field">
     <h2><%= object.title %></h2>
+    <div class="informative"
+         data-reference-id="<%= object.reference&.id %>"
+         data-reference-type="<%= object.class.model_name.name %>"
+         data-id="<%= object.id %>">
+      <i class="bi bi-lightbulb fs-5 icon-informative"></i>
+      <span class="informative-count"><%= object.reference&.click_count || 0 %></span>
+    </div>
     <div class="button-group">
       <%= link_to 'Edit', dynamic_path(object, :edit), class: 'btn btn-primary custom-btn' %>
       <%= link_to 'Delete', dynamic_path(object, :destroy), data: { turbo_method: :delete, turbo_confirm: '本当に削除してもよろしいですか?' }, class: 'btn btn-danger custom-btn' %>
