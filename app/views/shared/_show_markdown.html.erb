@@ -1,16 +1,25 @@
 <% if user_signed_in? && object.user == current_user %>
   <div class="custom-field">
+    <h2><%= object.title %></h2>
     <div class="button-group">
       <%= link_to 'Edit', dynamic_path(object, :edit), class: 'btn btn-primary custom-btn' %>
       <%= link_to 'Delete', dynamic_path(object, :destroy), data: { turbo_method: :delete, turbo_confirm: '本当に削除してもよろしいですか?' }, class: 'btn btn-danger custom-btn' %>
     </div>
   </div>
 <% end %>
-<h2><%= object.title %></h2>
+
 <div>
   <strong>Category:</strong> <%= object.category.name %>
 </div>
 <div>
-  <strong>Content:</strong>
+  <strong>Tags:</strong>
+  <% if object.tags.any? %>
+    <% object.tags.each do |tag| %>
+        <%= tag.name %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <strong>Content</strong>
   <div class="markdown-preview"><%= markdown(object.content) %></div>
 </div>

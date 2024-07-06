@@ -20,6 +20,10 @@
     <%= form.label :title %>
     <%= form.text_field :title, class: 'form-control custom-input' %>
 
+    <%= form.label :tags %>
+    <%= form.text_field :name, name: "#{form.object_name}[name]", class: 'form-control custom-input-tag' %>
+    <div id="search-result" class="list-group"></div>
+
     <%= form.label :content %>
     <%= form.text_area :content, id: 'markdown-editor', class: 'form-control' %>
   <% end %>
