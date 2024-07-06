@@ -30,31 +30,36 @@ class PromptForm
   def save
     return unless name.present?
 
-    prompt = Prompt.create(user_id:, title:, content:, category_id:, is_public:)
+    ActiveRecord::Base.transaction do
+      prompt = Prompt.create(user_id:, title:, content:, category_id:, is_public:)
 
-    names = name.split(',').map(&:strip)
-    names.each do |name|
-      tag = Tag.where(name:).first_or_initialize
-      tag.save
-      PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
+      names = name.split(',').map(&:strip)
+      names.each do |name|
+        tag = Tag.where(name:).first_or_initialize
+        tag.save
+        PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
+      end
+      Reference.create(referencable: prompt)
     end
   end
 
   def update(params, prompt)
-    # 一度タグの紐付けを消す
-    prompt.prompt_tags.destroy_all
+    ActiveRecord::Base.transaction do
+      # 一度タグの紐付けを消す
+      prompt.prompt_tags.destroy_all
 
-    # paramsの中のタグの情報を削除。同時に、返り値としてタグの情報を変数に代入
-    names = params.delete(:name)&.split(',')
-    if names.present?
-      names.each do |name|
-        # タグが既に存在するか確認し、存在しなければ新規作成する
-        tag = Tag.where(name: name.strip).first_or_create
-        # タグを保存
-        tag.save if name.present?
-        PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
+      # paramsの中のタグの情報を削除。同時に、返り値としてタグの情報を変数に代入
+      names = params.delete(:name)&.split(',')
+      if names.present?
+        names.each do |name|
+          # タグが既に存在するか確認し、存在しなければ新規作成する
+          tag = Tag.where(name: name.strip).first_or_create
+          # タグを保存
+          tag.save if name.present?
+          PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
+        end
       end
+      prompt.update(params)
     end
-    prompt.update(params)
   end
 end
