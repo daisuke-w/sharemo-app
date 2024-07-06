@@ -19,16 +19,18 @@ class PromptsController < ApplicationController
   end
 
   def show
+    # 非公開プロンプトには所有者以外アクセスできないようにする
+    redirect_to notes_path if !@prompt.is_public && (current_user.nil? || current_user != @prompt.user)
   end
 
   def edit
     prompt_attributes = @prompt.attributes
     @prompt_form = PromptForm.new(prompt_attributes)
+    @prompt_form.name = @prompt.tags.pluck(:name).join(',')
   end
 
   def update
     @prompt_form = PromptForm.new(prompt_form_params)
-    binding.pry
     if @prompt_form.valid?
       @prompt_form.update(prompt_form_params, @prompt)
       redirect_to prompt_path(@prompt)
@@ -48,7 +50,12 @@ class PromptsController < ApplicationController
   private
 
   def prompt_form_params
-    params.require(:prompt_form).permit(:title, :content, :category_id, :is_public).merge(user_id: current_user.id)
+    permitted_params = params.require(:prompt_form)
+                             .permit(:title, :content, :category_id, :is_public, :name)
+                             .merge(user_id: current_user.id)
+    # 末尾のカンマと空白を除去する
+    permitted_params[:name] = permitted_params[:name].chomp(', ')
+    permitted_params
   end
 
   def find_prompt

@@ -5,8 +5,8 @@ class NotesController < ApplicationController
   before_action :notes_by_category, only: [:show, :edit]
 
   def index
-    @notes = Note.includes(:user, :prompt).order(created_at: :desc)
-    @prompts = Prompt.includes(:user).order(created_at: :desc)
+    @notes = Note.includes(:user, :prompt, :tags).order(created_at: :desc)
+    @prompts = Prompt.includes(:user, :notes, :tags).order(created_at: :desc)
     @objects = (@notes + @prompts).sort_by(&:created_at).reverse
   end
 
@@ -25,11 +25,14 @@ class NotesController < ApplicationController
   end
 
   def show
+    # 非公開ノートには所有者以外アクセスできないようにする
+    redirect_to notes_path if !@note.is_public && (current_user.nil? || current_user != @note.user)
   end
 
   def edit
     note_attributes = @note.attributes
     @note_form = NoteForm.new(note_attributes)
+    @note_form.name = @note.tags.pluck(:name).join(',')
   end
 
   def update
@@ -53,9 +56,13 @@ class NotesController < ApplicationController
   private
 
   def note_form_params
-    permitted_params = params.require(:note_form).permit(:title, :content, :category_id, :is_public).merge(user_id: current_user.id)
+    permitted_params = params.require(:note_form)
+                             .permit(:title, :content, :category_id, :is_public, :name)
+                             .merge(user_id: current_user.id)
     # prompt_idのマージ nullを許容
     permitted_params = permitted_params.merge(prompt_id: params[:prompt_id]) if params[:prompt_id]
+    # 末尾のカンマと空白を除去する
+    permitted_params[:name] = permitted_params[:name].chomp(', ')
     permitted_params
   end
 
