@@ -10,7 +10,8 @@ class PromptForm
     :id,
     :created_at,
     :updated_at,
-    :name
+    :tag_name,
+    :color_code
   )
 
   # エラーメッセージ定義
@@ -28,14 +29,17 @@ class PromptForm
   end
 
   def save
-    return unless name.present?
+    return unless tag_name.present?
 
     ActiveRecord::Base.transaction do
       prompt = Prompt.create(user_id:, title:, content:, category_id:, is_public:)
 
-      names = name.split(',').map(&:strip)
-      names.each do |name|
-        tag = Tag.where(name:).first_or_initialize
+      tag_names = tag_name.split(',').map(&:strip)
+      tag_names.each do |tag_name|
+        tag = Tag.where(tag_name:).first_or_initialize
+        if tag.color_code.nil?
+          tag.color_code = rand(1..10)
+        end
         tag.save
         PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
       end
@@ -49,13 +53,16 @@ class PromptForm
       prompt.prompt_tags.destroy_all
 
       # paramsの中のタグの情報を削除。同時に、返り値としてタグの情報を変数に代入
-      names = params.delete(:name)&.split(',')
-      if names.present?
-        names.each do |name|
+      tag_names = params.delete(:tag_name)&.split(',')
+      if tag_names.present?
+        tag_names.each do |tag_name|
           # タグが既に存在するか確認し、存在しなければ新規作成する
-          tag = Tag.where(name: name.strip).first_or_create
+          tag = Tag.where(tag_name: tag_name.strip).first_or_create
+          if tag.color_code.nil?
+            tag.color_code = rand(1..10)
+          end
           # タグを保存
-          tag.save if name.present?
+          tag.save if tag_name.present?
           PromptTag.create(prompt_id: prompt.id, tag_id: tag.id)
         end
       end

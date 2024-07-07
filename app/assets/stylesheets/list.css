@@ -34,6 +34,12 @@
   align-items: center;
 }
 
+.title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/** カテゴリー用 **/
 .category {
   font-size: 12px;
   background-color: #eee;
@@ -42,6 +48,7 @@
   display: inline-block;
 }
 
+/** ノートのタイプ用 **/
 .type {
   font-size: 12px;
   border-radius: 15px;
@@ -57,25 +64,65 @@
   background-color: #f8d7da;
 }
 
+/** Tag用 **/
 .tags {
   margin-top: 10px;
 }
 
 .tag {
   display: inline-block;
-  background-color: #ddd;
+  color: #eee;
   border-radius: 3px;
   padding: 3px 5px;
   font-size: 12px;
-  margin-right: 5px;
   margin-bottom: 5px;
 }
 
-.title {
-  font-weight: bold;
-  margin-top: 10px;
+.tag:before {
+  content: "# ";
 }
 
+.tag-1 {
+  background-color: #007bff;
+}
+
+.tag-2 {
+  background-color: #6c757d;
+}
+
+.tag-3 {
+  background-color: #28a745;
+}
+
+.tag-4 {
+  background-color: #dc3545;
+}
+
+.tag-5 {
+  background-color: #ffc107;
+}
+
+.tag-6 {
+  background-color: #17a2b8;
+}
+
+.tag-7 {
+  background-color: #20c997;
+}
+
+.tag-8 {
+  background-color: #d63384;
+}
+
+.tag-9 {
+  background-color: #fd7e14;
+}
+
+.tag-10 {
+  background-color: #6610f2;
+}
+
+/** 詳細ボタン用 **/
 .footer {
   display: flex;
   justify-content: space-between;
@@ -92,6 +139,7 @@
   color: white;
 }
 
+/** 参考ボタン用 **/
 .informative {
   display: flex;
   align-items: center;

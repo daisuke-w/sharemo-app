@@ -25,12 +25,12 @@ function handleTagInput() {
             tags.forEach((tag) => {
               const childElement = document.createElement("div");
               childElement.classList.add("child");
-              childElement.textContent = tag.name;
+              childElement.textContent = tag.tag_name;
               searchResult.appendChild(childElement);
 
               // 入力候補のタグがクリックされた時の動作を設定
               childElement.addEventListener("click", () => {
-                currentTags.push(tag.name);
+                currentTags.push(tag.tag_name);
                 inputElement.value = currentTags.join(", ") + ", ";
                 searchResult.innerHTML = ""; // 選択後に検索結果をクリア
                 inputElement.focus();
