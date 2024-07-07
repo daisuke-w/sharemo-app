@@ -21,7 +21,7 @@
     <%= form.text_field :title, class: 'form-control custom-input' %>
 
     <%= form.label :tags %>
-    <%= form.text_field :name, name: "#{form.object_name}[name]", class: 'form-control custom-input-tag' %>
+    <%= form.text_field :tag_name, tag_name: "#{form.object_name}[name]", class: 'form-control custom-input-tag' %>
     <div id="search-result" class="list-group"></div>
 
     <%= form.label :content %>

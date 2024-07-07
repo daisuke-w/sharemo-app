@@ -26,7 +26,7 @@ class PromptsController < ApplicationController
   def edit
     prompt_attributes = @prompt.attributes
     @prompt_form = PromptForm.new(prompt_attributes)
-    @prompt_form.name = @prompt.tags.pluck(:name).join(',')
+    @prompt_form.tag_name = @prompt.tags.pluck(:tag_name).join(',')
   end
 
   def update
@@ -51,10 +51,10 @@ class PromptsController < ApplicationController
 
   def prompt_form_params
     permitted_params = params.require(:prompt_form)
-                             .permit(:title, :content, :category_id, :is_public, :name)
+                             .permit(:title, :content, :category_id, :is_public, :tag_name, :color_code)
                              .merge(user_id: current_user.id)
     # 末尾のカンマと空白を除去する
-    permitted_params[:name] = permitted_params[:name].chomp(', ')
+    permitted_params[:tag_name] = permitted_params[:tag_name].chomp(', ')
     permitted_params
   end
 

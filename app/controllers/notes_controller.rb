@@ -32,7 +32,7 @@ class NotesController < ApplicationController
   def edit
     note_attributes = @note.attributes
     @note_form = NoteForm.new(note_attributes)
-    @note_form.name = @note.tags.pluck(:name).join(',')
+    @note_form.tag_name = @note.tags.pluck(:tag_name).join(',')
   end
 
   def update
@@ -57,12 +57,12 @@ class NotesController < ApplicationController
 
   def note_form_params
     permitted_params = params.require(:note_form)
-                             .permit(:title, :content, :category_id, :is_public, :name)
+                             .permit(:title, :content, :category_id, :is_public, :tag_name, :color_code)
                              .merge(user_id: current_user.id)
     # prompt_idのマージ nullを許容
     permitted_params = permitted_params.merge(prompt_id: params[:prompt_id]) if params[:prompt_id]
     # 末尾のカンマと空白を除去する
-    permitted_params[:name] = permitted_params[:name].chomp(', ')
+    permitted_params[:tag_name] = permitted_params[:tag_name].chomp(', ')
     permitted_params
   end
 

@@ -4,5 +4,5 @@ class Tag < ApplicationRecord
   has_many :prompt_tags
   has_many :prompts, through: :prompt_tags
 
-  validates :name, uniqueness: true
+  validates :tag_name, uniqueness: true
 end
