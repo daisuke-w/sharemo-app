@@ -25,7 +25,7 @@
 | category_id | カテゴリーID  | integer    | null: false                    |
 | title       | タイトル      | string     | null: false                    |
 | content     | 内容         | text        | null: false                    |
-| is_public   | 公開設定      | boolean    | null: false, default: false    |
+| is_public   | 公開設定      | boolean    | default: false                 |
 
 ### Association
 
@@ -37,9 +37,10 @@
 
 ## tags テーブル
 
-| Column     | LogicName    | Type       | Options                        |
-| ---------- | ------------ | ---------- | ------------------------------ |
-| name       | タグ名       | string     | null: false                    |
+| Column      | LogicName    | Type       | Options      |
+| ----------- | ------------ | ---------- | ------------ |
+| tag_name    | タグ名       | string     | unique: true |
+| color_code  | カラーコード | integer    |              |
 
 ### Association
 
@@ -66,7 +67,7 @@
 | category_id | カテゴリーID  | integer    | null: false                    |
 | title       | タイトル      | string     | null: false                    |
 | content     | 内容          | text       | null: false                    |
-| is_public   | 公開設定      | boolean    | null: false, default: false    |
+| is_public   | 公開設定      | boolean    | default: false                 |
 
 ### Association
 
@@ -80,7 +81,7 @@
 
 | Column     | LogicName    | Type       | Options                        |
 | ---------- | ------------ | ---------- | ------------------------------ |
-| prompt     | プロンプトID  | references | null: false, foreign_key: true |
+| prompt     | プロンプトID | references | null: false, foreign_key: true |
 | tag        | タグID       | references | null: false, foreign_key: true |
 
 ### Association
