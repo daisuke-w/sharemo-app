@@ -31,20 +31,19 @@ class NoteForm
   end
 
   def save
-    return unless tag_name.present?
-
     ActiveRecord::Base.transaction do
       note = Note.create(user_id:, title:, content:, category_id:, is_public:)
 
-      tag_names = tag_name.split(',').map(&:strip)
-      tag_names.each do |tag_name|
-        tag = Tag.where(tag_name:).first_or_initialize
-        if tag.color_code.nil?
-          tag.color_code = rand(1..10)
+      if tag_name.present?
+        tag_names = tag_name.split(',').map(&:strip)
+        tag_names.each do |tag_name|
+          tag = Tag.where(tag_name:).first_or_initialize
+          tag.color_code ||= rand(1..10)
+          tag.save
+          NoteTag.create(note_id: note.id, tag_id: tag.id)
         end
-        tag.save
-        NoteTag.create(note_id: note.id, tag_id: tag.id)
       end
+
       Reference.create(referencable: note)
     end
   end
@@ -59,9 +58,7 @@ class NoteForm
         tag_names.each do |tag_name|
           # タグが既に存在するか確認し、存在しなければ新規作成する
           tag = Tag.where(tag_name: tag_name.strip).first_or_create
-          if tag.color_code.nil?
-            tag.color_code = rand(1..10)
-          end
+          tag.color_code ||= rand(1..10)
           # タグを保存
           tag.save if tag_name.present?
           NoteTag.create(note_id: note.id, tag_id: tag.id)

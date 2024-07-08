@@ -23,14 +23,20 @@
       </div>
 
       <% if user_signed_in? %>
-        <div class="col-md-3 text-end">
-          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-primary me-2' %>
-          <button class="btn btn-primary me-3 dropdown-toggle" type="button" id="create-new-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            New Create
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="create-new-dropdown">
+        <div class="dropdown text-end me-4">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user.user_image.attached? %>
+              <%= image_tag(current_user.user_image, class: 'rounded-circle profile-header-img', alt: 'User Image') %>
+            <% else %>
+              <i class="bi bi-person-plus-fill profile-header-icon"></i>
+            <% end %>
+          </a>
+          <ul class="dropdown-menu text-small">
             <li><%= link_to 'New Note', new_note_path, class: 'dropdown-item' %></li>
             <li><%= link_to 'New Prompt', new_prompt_path, class: 'dropdown-item' %></li>
+            <li><%= link_to 'My Page', user_path(current_user), class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
           </ul>
         </div>
       <% else %>

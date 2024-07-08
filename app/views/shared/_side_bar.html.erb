@@ -9,39 +9,9 @@
   <% if (context == :show || context == :edit) && user_signed_in? && current_user.id == object.user_id %>
     <ul class="list-unstyled ps-0">
       <% if controller_name == 'notes' %>
-        <% @notes_by_category.each do |category, notes| %>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#category-<%= category.id %>-collapse" aria-expanded="false">
-              <%= category.name %>
-            </button>
-            <div class="collapse" id="category-<%= category.id %>-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <% notes.each do |note| %>
-                  <li>
-                    <%= link_to note.title, note_path(note), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </li>
-        <% end %>
+        <%= render partial: 'shared/category_note_list' %>
       <% elsif controller_name == 'prompts' %>
-        <% @prompts_by_category.each do |category, prompts| %>
-          <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#category-<%= category.id %>-collapse" aria-expanded="false">
-              <%= category.name %>
-            </button>
-            <div class="collapse" id="category-<%= category.id %>-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <% prompts.each do |prompt| %>
-                  <li>
-                    <%= link_to prompt.title, prompt_path(prompt), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </li>
-        <% end %>
+        <%= render partial: 'shared/category_prompt_list' %>
       <% end %>
     </ul>
   <% end %>

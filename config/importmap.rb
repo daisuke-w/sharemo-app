@@ -10,3 +10,4 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/inde
 pin "markdown", to: "markdown.js"
 pin "tagSearch", to: "tag_search.js"
 pin "referenceCount", to: "reference_count.js"
+pin "mypage", to: "mypage.js"

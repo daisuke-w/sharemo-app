@@ -5,8 +5,8 @@ class NotesController < ApplicationController
   before_action :notes_by_category, only: [:show, :edit]
 
   def index
-    @notes = Note.includes(:user, :prompt, :tags).order(created_at: :desc)
-    @prompts = Prompt.includes(:user, :notes, :tags).order(created_at: :desc)
+    @notes = Note.includes(:user, :prompt, :tags, :reference).order(created_at: :desc)
+    @prompts = Prompt.includes(:user, :notes, :tags, :reference).order(created_at: :desc)
     @objects = (@notes + @prompts).sort_by(&:created_at).reverse
   end
 

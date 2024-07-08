@@ -1,0 +1,75 @@
+/* ----------------
+ マイページ用のCSS
+---------------- */
+.mypage-side-bar {
+  width: 280px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.profile-section {
+  margin-bottom: 10px;
+}
+
+.profile-img {
+  font-size: 6rem;
+  height: 150px;
+  width: 150px;
+  border: 3px solid mediumspringgreen;
+  margin: auto;
+  background-color: white;
+}
+
+.profile-icon {
+  font-size: 6rem;
+  height: 150px;
+  width: 150px;
+  border: 3px solid deepskyblue;
+  margin: auto;
+  background-color: white;
+}
+
+.bi-person-plus-fill {
+  color: deepskyblue;
+}
+
+.basic-info-section,
+.note-info-section,
+.prompts-info-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notes-list .note-box {
+  flex: 0 0 20%;
+  margin: 10px;
+}
+
+.mypage-main-content {
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.content-info .row > * {
+  padding-left: 0;
+}
+
+td:empty::before {
+  content: "ー";
+  color: gray;
+}
