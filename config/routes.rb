@@ -1,17 +1,28 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'tops#index'
+
   resources :notes do
     resource :reference, only: [] do
       post 'increment_clicks', on: :member
     end
   end
+
   resources :prompts, only: [:new, :create, :show, :edit, :update, :destroy] do
     resource :reference, only: [] do
       post 'increment_clicks', on: :member
     end
   end
+
   resources :searches, only: [] do
     get 'tags', on: :collection
+  end
+
+  resources :users, only: [:show, :edit, :update, :destroy] do
+    member do
+      get 'basic_info', to: 'users#basic_info'
+      get 'notes_info', to: 'users#notes_info'
+      get 'prompts_info', to: 'users#prompts_info'
+    end
   end
 end
