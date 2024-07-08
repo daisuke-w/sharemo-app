@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :notes
   has_many :prompts
+  has_one_attached :user_image
 end
