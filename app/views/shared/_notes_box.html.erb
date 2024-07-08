@@ -1,0 +1,28 @@
+<div class="note-box">
+  <div class="header">
+    <div class="category"><%= object.category[:name] %></div>
+    <div class="type" data-obj="<%= object&.is_a?(Note) ? 'Note' : 'Prompt' %>">
+      <%= object.is_a?(Note) ? 'Note' : 'Prompt' %>
+    </div>
+  </div>
+  <div class="tags">
+    <% if object.tags.any? %>
+      <% object.tags.each_with_index do |tag, index| %>
+        <% if index < 5 %>
+          <span class="tag tag-<%= tag.color_code %>"><%= tag.tag_name %></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="title"><%= object.title %></div>
+  <div class="footer">
+    <%= link_to "Detail", dynamic_path(object, :show), class: 'btn details-button' %>
+    <div class="informative"
+          data-reference-id="<%= object.reference&.id %>"
+          data-reference-type="<%= object.class.model_name.name %>"
+          data-id="<%= object.id %>">
+      <i class="bi bi-lightbulb icon-informative"></i>
+      <span class="informative-count"><%= object.reference&.click_count || 0 %></span>
+    </div>
+  </div>
+</div>
