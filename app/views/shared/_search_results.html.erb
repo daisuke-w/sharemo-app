@@ -1,0 +1,28 @@
+<div class="search-filter-section">
+  <%= form_with url: results_searches_path, method: :get, local: true do %>
+    <div class="d-flex justify-content-center mb-3">
+      <div class="input-group search-input-group">
+        <%= text_field_tag :keyword, params[:keyword], placeholder: 'キーワード', class: 'form-control' %>
+        <%= submit_tag 'Search', class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <div class="filter-section">
+      <div class="form-group">
+        <%= label_tag :category, 'Category' %>
+        <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: 'すべて', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :tags, 'Tag' %>
+        <%= select_tag :tags, options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tags]), include_blank: 'すべて', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :type, 'Type' %>
+        <%= select_tag :type, options_for_select([['すべて', ''], ['Note', 'Note'], ['Prompt', 'Prompt']], params[:type]), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :sort, 'Sort' %>
+        <%= select_tag :sort, options_for_select([['新しい順', 'created_desc'], ['古い順', 'created_asc'], ['参考数順', 'reference_count_desc']], params[:sort]), class: 'form-control' %>
+      </div>
+    </div>
+  <% end %>
+</div>

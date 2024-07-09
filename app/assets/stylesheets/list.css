@@ -158,3 +158,41 @@
 .bi-lightbulb-fill {
   color: yellow;
 }
+
+/** 検索用 **/
+.search-filter-section {
+  width: 100%;
+}
+
+.search-input-group {
+  width: 50%;
+}
+
+.filter-section {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group {
+  width: calc(25% - 10px);
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .search-input-group {
+    width: 100%;
+  }
+
+  .filter-section {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+}
+
