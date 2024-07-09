@@ -1,7 +1,11 @@
+<div class="container my-4">
+  <%= render partial: 'shared/search_results' %>
+</div>
+
 <div class="notes-container">
   <% @objects.each do |object| %>
     <% if object.is_public %>
-      <%= render partial: 'shared/notes_box', locals: { object: } %>
+      <%= render partial: 'shared/note_boxes', locals: { object: } %>
     <% end %>
   <% end %>
 </div>
