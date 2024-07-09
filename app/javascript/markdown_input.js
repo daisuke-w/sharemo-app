@@ -7,8 +7,26 @@ function initializeEasyMDE() {
   if (markdownEditor && !markdownEditor.hasAttribute('data-easymde-initialized')) {
     const easyMDE = new EasyMDE({
       element: markdownEditor,
+      spellChecker: false,
       placeholder: "Markdown記法が使えます...",
-      toolbar: ["bold", "italic", "heading", "|", "quote", "unordered-list", "ordered-list", "|", "link", "image", "|", "preview", "guide"],
+      toolbar: [
+        "bold", "italic", "heading", "strikethrough", "|",
+        "code", "quote", "unordered-list", "ordered-list", "|",
+        "link", "image", { // Tableをツールバーに追加すると表示が崩れる為ドロップダウンにして実装
+          name: "others",
+          className: "fa fa-blind",
+          title: "others buttons",
+          children: [
+            {
+              name: "table",
+              action: EasyMDE.drawTable,
+              className: "fa fa-table",
+              title: "Table",
+            }
+          ]
+        }, "|",
+        "preview", "guide"
+      ],
       renderingConfig: {
         codeSyntaxHighlighting: true
       }
