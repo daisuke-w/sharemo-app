@@ -19,5 +19,8 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # lib配下に作成したcustom_render_html.rbを読み込む
+    config.autoload_paths += %W(#{config.root}/app/lib)
   end
 end
