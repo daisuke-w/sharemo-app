@@ -5,7 +5,8 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
-import "markdown"
+import "markdownIn"
+import "markdownOut"
 import "tagSearch"
 import "referenceCount"
 import "mypage"

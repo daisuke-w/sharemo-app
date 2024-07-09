@@ -7,12 +7,12 @@ class UserInfoService
   # ユーザーの情報を取得
   def user_information
     {
-      note_information: note_information,         # ノートに関する情報
-      prompt_information: prompt_information,     # プロンプトに関する情報
-      notes: notes,                               # ユーザーの保有するノート一覧
-      prompts: prompts,                           # ユーザーの保有するプロンプト一覧
-      notes_by_category: notes_by_category,       # カテゴリ別ノート一覧
-      prompts_by_category: prompts_by_category    # カテゴリ別プロンプト一覧
+      note_information:,    # ノートに関する情報
+      prompt_information:,  # プロンプトに関する情報
+      notes:,               # ユーザーの保有するノート一覧
+      prompts:,             # ユーザーの保有するプロンプト一覧
+      notes_by_category:,   # カテゴリ別ノート一覧
+      prompts_by_category:  # カテゴリ別プロンプト一覧
     }
   end
 
