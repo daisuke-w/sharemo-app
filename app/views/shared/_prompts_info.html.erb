@@ -6,7 +6,7 @@
     <h3>Public Prompts</h3>
     <div class="prompts-list">
       <% public_prompts.each do |prompt| %>
-        <%= render partial: 'shared/notes_box', locals: { object: prompt } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: prompt } %>
       <% end %>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <h3>Private Prompts</h3>
     <div class="prompts-list">
       <% private_prompts.each do |prompt| %>
-        <%= render partial: 'shared/notes_box', locals: { object: prompt } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: prompt } %>
       <% end %>
     </div>
   <% end %>

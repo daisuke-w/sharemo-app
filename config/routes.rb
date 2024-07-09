@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   end
 
   resources :searches, only: [] do
-    get 'tags', on: :collection
+    collection do
+      get 'tags'
+      get 'results'
+    end
   end
 
   resources :users, only: [:show, :edit, :update, :destroy] do

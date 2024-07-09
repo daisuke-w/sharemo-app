@@ -6,7 +6,7 @@
     <h3>Public Notes</h3>
     <div class="notes-list">
       <% public_notes.each do |note| %>
-        <%= render partial: 'shared/notes_box', locals: { object: note } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: note } %>
       <% end %>
     </div>
   <% end %>
@@ -15,7 +15,7 @@
     <h3>Private Notes</h3>
     <div class="notes-list">
       <% private_notes.each do |note| %>
-        <%= render partial: 'shared/notes_box', locals: { object: note } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: note } %>
       <% end %>
     </div>
   <% end %>
