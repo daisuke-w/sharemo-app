@@ -4,10 +4,10 @@
       <%= category.name %>
     </button>
     <div class="collapse" id="category-<%= category.id %>-collapse">
-      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+      <ul class="btn-toggle-nav list-unstyled small">
         <% notes.each do |note| %>
           <li>
-            <%= link_to note.title, note_path(note), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
+            <%= link_to note.title, note_path(note), class: 'link-body-emphasis text-decoration-none' %>
           </li>
         <% end %>
       </ul>

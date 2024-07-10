@@ -1,5 +1,6 @@
 class PromptForm
   include ActiveModel::Model
+  include CommonMethods
 
   attr_accessor(
     :user_id,
@@ -21,11 +22,6 @@ class PromptForm
     validates :category_id, numericality: { other_than: 1, message: error_message }
     validates :title
     validates :content
-  end
-
-  # is_publicカラムが1の場合に true を返す
-  def public?
-    is_public
   end
 
   def save

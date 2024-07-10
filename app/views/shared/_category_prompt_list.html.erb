@@ -4,10 +4,10 @@
       <%= category.name %>
     </button>
     <div class="collapse" id="category-<%= category.id %>-collapse">
-      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+      <ul class="btn-toggle-nav list-unstyled small">
         <% prompts.each do |prompt| %>
           <li>
-            <%= link_to prompt.title, prompt_path(prompt), class: 'link-body-emphasis d-inline-flex text-decoration-none rounded' %>
+            <%= link_to prompt.title, prompt_path(prompt), class: 'link-body-emphasis text-decoration-none' %>
           </li>
         <% end %>
       </ul>

@@ -3,6 +3,6 @@
     <%= render partial: 'shared/side_bar', locals: { object: @note_form, context: :new } %>
   </div>
   <div class="markdown-area">
-    <%= render partial: 'shared/markdown', locals: { object: @note_form, url: notes_path, method: :post } %>
+    <%= render partial: 'shared/markdown', locals: { object: @note_form, url: notes_path, method: :post, prompt_id: @prompt&.id } %>
   </div>
 </div>

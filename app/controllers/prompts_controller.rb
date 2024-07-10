@@ -21,6 +21,8 @@ class PromptsController < ApplicationController
   def show
     # 非公開プロンプトには所有者以外アクセスできないようにする
     redirect_to notes_path if !@prompt.is_public && (current_user.nil? || current_user != @prompt.user)
+    # Noteが紐づいている場合は取得
+    @notes = @prompt.notes if @prompt.present?
   end
 
   def edit

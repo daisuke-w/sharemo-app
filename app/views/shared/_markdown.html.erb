@@ -1,5 +1,8 @@
 <div class="form-container">
   <%= form_with model: object, url: url, method: method, local: true do |form| %>
+    <% if object.is_a?(NoteForm) %>
+      <%= form.hidden_field :prompt_id, value: prompt_id %>
+    <% end %>
     <%= form.label :category %>
     <div class="custom-field">
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>

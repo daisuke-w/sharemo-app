@@ -50,14 +50,10 @@
   display: none;
 }
 
-.notes-list {
+.notes-list,
+.prompts-list {
   display: flex;
   flex-wrap: wrap;
-}
-
-.notes-list .note-box {
-  flex: 0 0 20%;
-  margin: 10px;
 }
 
 .mypage-main-content {
