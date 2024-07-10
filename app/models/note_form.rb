@@ -1,5 +1,6 @@
 class NoteForm
   include ActiveModel::Model
+  include CommonMethods
 
   attr_accessor(
     :user_id,
@@ -25,14 +26,9 @@ class NoteForm
     validates :content
   end
 
-  # is_publicカラムが1の場合に true を返す
-  def public?
-    is_public
-  end
-
   def save
     ActiveRecord::Base.transaction do
-      note = Note.create(user_id:, title:, content:, category_id:, is_public:)
+      note = Note.create(user_id:, title:, content:, category_id:, is_public:, prompt_id:)
 
       if tag_name.present?
         tag_names = tag_name.split(',').map(&:strip)
