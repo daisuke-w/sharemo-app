@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resource :reference, only: [] do
       post 'increment_clicks', on: :member
     end
+    resources :notes, only: [:new, :create]
   end
 
   resources :searches, only: [] do
