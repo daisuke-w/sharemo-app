@@ -12,10 +12,12 @@ class NotesController < ApplicationController
 
   def new
     @note_form = NoteForm.new
+    @prompt = Prompt.find(params[:prompt_id]) if params[:prompt_id]
   end
 
   def create
     @note_form = NoteForm.new(note_form_params)
+    @note_form.prompt_id = params[:prompt_id] if params[:prompt_id]
     if @note_form.valid?
       @note_form.save
       redirect_to notes_path
@@ -31,6 +33,7 @@ class NotesController < ApplicationController
 
   def edit
     note_attributes = @note.attributes
+    @prompt = Prompt.find(note_attributes['prompt_id']) if note_attributes['prompt_id']
     @note_form = NoteForm.new(note_attributes)
     @note_form.tag_name = @note.tags.pluck(:tag_name).join(',')
   end
@@ -56,11 +59,11 @@ class NotesController < ApplicationController
   private
 
   def note_form_params
-    permitted_params = params.require(:note_form)
-                             .permit(:title, :content, :category_id, :is_public, :tag_name, :color_code)
-                             .merge(user_id: current_user.id)
-    # prompt_idのマージ nullを許容
-    permitted_params = permitted_params.merge(prompt_id: params[:prompt_id]) if params[:prompt_id]
+    note_form = params.require(:note_form)
+    note_form_permitted = [:title, :content, :category_id, :is_public, :tag_name, :color_code]
+    note_form_permitted << :prompt_id if note_form[:prompt_id]
+    permitted_params = note_form.permit(note_form_permitted).merge(user_id: current_user.id)
+
     # 末尾のカンマと空白を除去する
     permitted_params[:tag_name] = permitted_params[:tag_name].chomp(', ')
     permitted_params
