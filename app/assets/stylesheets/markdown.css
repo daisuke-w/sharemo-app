@@ -151,3 +151,16 @@
   overflow-x: scroll;
   overflow-y: auto;
 }
+
+.author {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.author-link {
+  margin-left: 0.3rem;
+  --bs-btn-padding-y: 0rem;
+  --bs-btn-padding-x: 0.1rem;
+  --bs-btn-font-size: 0.8rem;
+}
