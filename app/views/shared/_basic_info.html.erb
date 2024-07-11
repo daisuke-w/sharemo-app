@@ -3,18 +3,18 @@
     <h3>基本情報</h3>
     <% if current_user == @user %>
       <div class="button-group">
-        <%= link_to 'Edit', edit_user_path(current_user), class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
       </div>
     <% end %>
   </div>
   <div>
-  <strong>NickName:</strong> <%= current_user.nickname %>
+  <strong>NickName:</strong> <%= @user.nickname %>
   </div>
   <div>
-  <strong>Email:</strong> <%= current_user.email %>
+  <strong>Email:</strong> <%= @user.email %>
   </div>
   <div>
-  <strong>Profile:</strong> <%= simple_format(current_user.profile) %>
+  <strong>Profile:</strong> <%= simple_format(@user.profile) %>
   </div>
   <div class="content-info container mt-4">
     <div class="row mt-4">
