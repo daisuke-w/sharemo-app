@@ -1,9 +1,11 @@
 <div class="basic-info-section">
   <div class="custom-field">
     <h3>基本情報</h3>
-    <div class="button-group">
-      <%= link_to 'Edit', edit_user_path(current_user), class: 'btn btn-primary' %>
-    </div>
+    <% if current_user == @user %>
+      <div class="button-group">
+        <%= link_to 'Edit', edit_user_path(current_user), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
   <div>
   <strong>NickName:</strong> <%= current_user.nickname %>
