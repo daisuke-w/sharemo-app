@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom fixed-header">
       <div class="col-md-3 ms-3 mb-2 mb-md-0 d-flex align-items-center">
         <%= link_to image_tag('logo.png', alt: 'Logo', class: 'logo'), '/' %>
       </div>
@@ -46,10 +46,12 @@
         </div>
       <% end %>
     </header>
-    <%= yield %>
+    <div class="contents-margin-top">
+      <%= yield %>
+    </div>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
       <div class="col-md-4 d-flex align-items-center">
-        <span class="mb-3 mb-md-0 text-body-secondary">Copyright © 2024 Myapp All rights reserved.</span>
+        <span class="ms-3 mb-3 mb-md-0 text-body-secondary">Copyright © 2024 SHAREMO All rights reserved.</span>
       </div>
     </footer>
     <!-- EasyMDEのJSを追加 -->
