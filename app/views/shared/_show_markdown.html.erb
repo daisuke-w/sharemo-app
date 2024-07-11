@@ -47,3 +47,6 @@
     <% end %>
   <% end %>
 </div>
+<div class="author">
+  <strong>Author:</strong> <%= link_to object.user.nickname, user_path(object.user), class: 'btn btn-outline-primary btn-sm author-link' %>
+</div>
