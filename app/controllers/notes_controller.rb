@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_note, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, only: :edit
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :notes_by_category, only: [:show, :edit]
 
   def index

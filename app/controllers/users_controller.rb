@@ -2,10 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update, :destroy, :basic_info, :notes_info, :prompts_info]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :basic_info, :notes_info, :prompts_info]
   before_action :init_user_info, only: [:show, :basic_info, :notes_info, :prompts_info]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def show
-    # マイページには自分以外アクセスできないようにする
-    redirect_to notes_path if current_user.id != @user.id
   end
 
   def edit
@@ -55,5 +54,10 @@ class UsersController < ApplicationController
     @prompts = user_information[:prompts]
     @notes_by_category = user_information[:notes_by_category]
     @prompts_by_category = user_information[:prompts_by_category]
+  end
+
+  def move_to_index
+    # ログインユーザーとマイページが別人の場合は一覧ページに遷移
+    redirect_to notes_path if current_user.id != @user.id
   end
 end

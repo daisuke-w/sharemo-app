@@ -1,7 +1,7 @@
 class PromptsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_prompt, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, only: :edit
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :prompts_by_category, only: [:show, :edit]
 
   def new

@@ -1,16 +1,22 @@
+<% is_current_user = (current_user == @user) %>
+
 <div class="profile-section text-center">
   <%= form_with(model: @user, url: user_path(@user), method: :patch, class: 'd-flex flex-column align-items-center') do |f| %>
     <% if @user.user_image.attached? %>
       <%= image_tag(@user.user_image, class: 'rounded-circle profile-img mb-3') %>
-      <%= link_to 'Remove', user_path(@user), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+      <% if is_current_user %>
+        <%= link_to 'Remove', user_path(@user), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+      <% end %>
     <% else %>
-      <div class="profile-icon rounded-circle mb-3">
-        <label>
-          <i class="bi bi-person-plus-fill mb-3"></i>
-          <%= f.file_field :user_image, class: 'hidden' %>
-        </label>
-      </div>
-      <%= f.submit 'Update', class: 'btn btn-warning' %>
+      <% if is_current_user %>
+        <div class="profile-icon rounded-circle mb-3">
+          <label>
+            <i class="bi bi-person-plus-fill mb-3"></i>
+            <%= f.file_field :user_image, class: 'hidden' %>
+          </label>
+        </div>
+        <%= f.submit 'Update', class: 'btn btn-warning' %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -19,16 +25,18 @@
   <%= link_to '基本情報', basic_info_user_path(@user), class: 'sidebar-link', data: { target: 'basic_info' } %>
 </div>
 <hr>
-<div class="notes-section">
-  <%= link_to 'Note', notes_info_user_path(@user), class: 'sidebar-link', data: { target: 'notes_info' } %>
-  <ul class="list-unstyled ps-0">
-    <%= render partial: 'shared/category_note_list' %>
-  </ul>
-</div>
-<hr>
-<div class="prompts-section">
-  <%= link_to 'Prompt', prompts_info_user_path(@user), class: 'sidebar-link', data: { target: 'prompts_info' } %>
-  <ul class="list-unstyled ps-0">
-    <%= render partial: 'shared/category_prompt_list' %>
-  </ul>
-</div>
+<% if is_current_user %>
+  <div class="notes-section">
+    <%= link_to 'Note', notes_info_user_path(@user), class: 'sidebar-link', data: { target: 'notes_info' } %>
+    <ul class="list-unstyled ps-0">
+      <%= render partial: 'shared/category_note_list' %>
+    </ul>
+  </div>
+  <hr>
+  <div class="prompts-section">
+    <%= link_to 'Prompt', prompts_info_user_path(@user), class: 'sidebar-link', data: { target: 'prompts_info' } %>
+    <ul class="list-unstyled ps-0">
+      <%= render partial: 'shared/category_prompt_list' %>
+    </ul>
+  </div>
+<% end %>
