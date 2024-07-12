@@ -22,6 +22,7 @@ class PromptForm
     validates :category_id, numericality: { other_than: 1, message: error_message }
     validates :title
     validates :content
+    validates :user_id
   end
 
   def save
