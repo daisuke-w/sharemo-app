@@ -40,7 +40,7 @@
 | Column      | LogicName    | Type       | Options      |
 | ----------- | ------------ | ---------- | ------------ |
 | tag_name    | タグ名       | string     | unique: true |
-| color_code  | カラーコード | integer    |              |
+| color_code  | カラーコード | integer    | null: false  |
 
 ### Association
 
@@ -91,11 +91,10 @@
 
 ## references テーブル
 
-| Column            | LogicName      | Type      | Options            |
-| ----------------- | -------------- | --------- | ------------------ |
-| referencable_type | Note or Prompt | string    | null: false        |
-| referencable_id   | 参考ID         | bigint    | null: false, index |
-| click_count       | クリック数     | integer   | default: 0         |
+| Column            | LogicName      | Type      | Options      |
+| ----------------- | -------------- | --------- | ------------ |
+| referencable_type | Note or Prompt | string    | null: false  |
+| click_count       | クリック数      | integer   | default: 0   |
 
 ### Association
 
