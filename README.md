@@ -93,6 +93,7 @@
 
 | Column            | LogicName      | Type      | Options      |
 | ----------------- | -------------- | --------- | ------------ |
+| referencable_id   | 参考ID         | integer    | null: false, index |
 | referencable_type | Note or Prompt | string    | null: false  |
 | click_count       | クリック数      | integer   | default: 0   |
 
