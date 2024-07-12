@@ -16,7 +16,6 @@ class NoteForm
     :color_code
   )
 
-
   # エラーメッセージ定義
   error_message = "can't be blank"
 

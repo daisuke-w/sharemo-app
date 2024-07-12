@@ -9,6 +9,14 @@ RSpec.describe User, type: :model do
       it '入力項目がすべて存在すれば登録できる' do
         expect(@user).to be_valid
       end
+      it 'プロフィールは空でも登録できる' do
+        @user.profile = ''
+        expect(@user).to be_valid
+      end
+      it '画像は空でも登録できる' do
+        @user.user_image = nil
+        expect(@user).to be_valid
+      end
     end
     context '新規登録できない場合' do
       it 'nicknameが空では登録できない' do
