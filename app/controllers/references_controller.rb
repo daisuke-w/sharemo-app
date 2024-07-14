@@ -3,7 +3,8 @@ class ReferencesController < ApplicationController
 
   def increment_clicks
     @reference = Reference.find_by(referencable_type: @type, referencable_id: @id)
-    if params[:is_filled]
+    is_filled = ActiveModel::Type::Boolean.new.cast(params[:is_filled])
+    if is_filled
       # アイコンが塗りつぶし状態の場合、クリック数を減らす
       @reference.decrement!(:click_count)
     else
@@ -25,9 +26,5 @@ class ReferencesController < ApplicationController
       @type = 'Prompt'
       @id = params[:prompt_id]
     end
-  end
-
-  def reference_params
-    params.require(:reference).permit(:click_count)
   end
 end

@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_note, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  before_action :notes_by_category, only: [:show, :edit]
+  before_action :notes_by_category, only: [:show, :edit, :update]
 
   def index
     @notes = Note.includes(:user, :prompt, :tags, :reference).order(created_at: :desc)
@@ -65,7 +65,7 @@ class NotesController < ApplicationController
     permitted_params = note_form.permit(note_form_permitted).merge(user_id: current_user.id)
 
     # 末尾のカンマと空白を除去する
-    permitted_params[:tag_name] = permitted_params[:tag_name].chomp(', ')
+    permitted_params[:tag_name] = permitted_params[:tag_name]&.chomp(', ')
     permitted_params
   end
 

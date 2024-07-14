@@ -2,7 +2,7 @@ class PromptsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_prompt, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  before_action :prompts_by_category, only: [:show, :edit]
+  before_action :prompts_by_category, only: [:show, :edit, :update]
 
   def new
     @prompt_form = PromptForm.new
@@ -56,7 +56,7 @@ class PromptsController < ApplicationController
                              .permit(:title, :content, :category_id, :is_public, :tag_name, :color_code)
                              .merge(user_id: current_user.id)
     # 末尾のカンマと空白を除去する
-    permitted_params[:tag_name] = permitted_params[:tag_name].chomp(', ')
+    permitted_params[:tag_name] = permitted_params[:tag_name]&.chomp(', ')
     permitted_params
   end
 
