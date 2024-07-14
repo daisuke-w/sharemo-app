@@ -16,6 +16,12 @@
           </label>
         </div>
         <%= f.submit 'Update', class: 'btn btn-warning' %>
+      <% else %>
+        <div class="profile-icon rounded-circle mb-3">
+          <label>
+            <i class="bi bi-person-plus-fill mb-3"></i>
+          </label>
+        </div>
       <% end %>
     <% end %>
   <% end %>

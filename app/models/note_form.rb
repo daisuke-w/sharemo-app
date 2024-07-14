@@ -16,7 +16,6 @@ class NoteForm
     :color_code
   )
 
-
   # エラーメッセージ定義
   error_message = "can't be blank"
 
@@ -24,6 +23,7 @@ class NoteForm
     validates :category_id, numericality: { other_than: 1, message: error_message }
     validates :title
     validates :content
+    validates :user_id
   end
 
   def save

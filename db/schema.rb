@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_07_115617) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_12_015441) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_115617) do
     t.string "tag_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "color_code"
+    t.integer "color_code", null: false
     t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
   end
 
