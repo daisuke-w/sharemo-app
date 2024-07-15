@@ -166,13 +166,10 @@
 }
 
 table {
-  width: 100%;
-  margin: 10px 0;
   font-size: 14px;
 }
 
 table, th, td {
-  border: 1px solid #dddddd;
   padding: 5px;
 }
 
