@@ -23,13 +23,15 @@ RSpec.describe SearchesController, type: :request do
 
   describe 'GET #results' do
     before do
-      @user = FactoryBot.create(:user)
-      @note1 = FactoryBot.create(:note, user: @user, is_public: true)
-      @note2 = FactoryBot.create(:note, user: @user, is_public: true)
-      @prompt1 = FactoryBot.create(:prompt, user: @user, is_public: true)
-      @prompt2 = FactoryBot.create(:prompt, user: @user, is_public: true)
+      @user = FactoryBot.create(:user, group_id: 2)
+      @note1 = FactoryBot.create(:note, user: @user, is_public: true, group_id: 2)
+      @note2 = FactoryBot.create(:note, user: @user, is_public: true, group_id: 2)
+      @prompt1 = FactoryBot.create(:prompt, user: @user, is_public: true, group_id: 2)
+      @prompt2 = FactoryBot.create(:prompt, user: @user, is_public: true, group_id: 2)
       @tag = FactoryBot.create(:tag)
       NoteTag.create(tag_id: @tag.id, note_id: @note1.id)
+
+      sign_in @user
     end
 
     context '検索キーワードが指定されている場合' do

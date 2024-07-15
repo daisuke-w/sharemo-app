@@ -13,19 +13,19 @@ module RequestHelpers
 
   # 正常なレスポンスを返却
   def expect_successful_response(http_method, path, params: {})
-    public_send(http_method, path, params: params)
+    public_send(http_method, path, params:)
     expect(response.status).to eq(200)
   end
 
   # レスポンスに含まれるかを確認
   def expect_element_in_response(http_method, path, element, params: {})
-    public_send(http_method, path, params: params)
+    public_send(http_method, path, params:)
     expect(response.body).to include(element)
   end
 
   # レスポンスに含まれていないかを確認
   def expect_element_not_in_response(http_method, path, element, params: {})
-    public_send(http_method, path, params: params)
+    public_send(http_method, path, params:)
     expect(response.body).not_to include(element)
   end
 

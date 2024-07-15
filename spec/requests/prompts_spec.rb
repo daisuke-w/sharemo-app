@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe PromptsController, type: :request do
   before do
-    @user_prompt = FactoryBot.create(:user)
-    @prompt = FactoryBot.create(:prompt, user: @user_prompt)
-    @public_prompt = FactoryBot.create(:prompt, user: @user_prompt, is_public: true)
-    @private_prompt = FactoryBot.create(:prompt, user: @user_prompt, is_public: false)
+    @user_prompt = FactoryBot.create(:user, group_id: 2)
+    @prompt = FactoryBot.create(:prompt, user: @user_prompt, group_id: 2)
+    @public_prompt = FactoryBot.create(:prompt, user: @user_prompt, is_public: true, group_id: 2)
+    @private_prompt = FactoryBot.create(:prompt, user: @user_prompt, is_public: false, group_id: 2)
   end
 
   describe 'GET #new' do
@@ -26,11 +26,11 @@ RSpec.describe PromptsController, type: :request do
 
   describe 'GET #show' do
     context '認証されていない場合' do
-      it '公開プロンプトにアクセスできる' do
-        expect_successful_response(:get, prompt_path(@public_prompt))
+      it '公開プロンプトにはアクセスできない' do
+        expect_redirect_to_login(:get, prompt_path(@public_prompt))
       end
       it '非公開プロンプトにはアクセスできない' do
-        expect_redirect_to_list(:get, prompt_path(@private_prompt))
+        expect_redirect_to_login(:get, prompt_path(@private_prompt))
       end
     end
 
@@ -52,8 +52,8 @@ RSpec.describe PromptsController, type: :request do
       end
 
       context '非公開プロンプトの所有者が別人の場合' do
-        other_user = FactoryBot.create(:user)
-        other_private_prompt = FactoryBot.create(:prompt, user: other_user, is_public: false)
+        other_user = FactoryBot.create(:user, group_id: 2)
+        other_private_prompt = FactoryBot.create(:prompt, user: other_user, is_public: false, group_id: 2)
 
         it '一覧ページにリダイレクトされる' do
           expect_redirect_to_list(:get, prompt_path(other_private_prompt))
@@ -81,7 +81,8 @@ RSpec.describe PromptsController, type: :request do
                 is_public: 0,
                 title: '新しいプロンプト',
                 content: '内容',
-                tag_name: 'tag1'
+                tag_name: 'tag1',
+                group_id: 2
               }
             }
           end.to change(Prompt, :count).by(1)
@@ -132,7 +133,8 @@ RSpec.describe PromptsController, type: :request do
               is_public: @prompt.is_public,
               title: '更新されたプロンプト',
               content: @prompt.content,
-              tag_name: @prompt.tags
+              tag_name: @prompt.tags,
+              group_id: 2
             }
           }
           expect(@prompt.reload.title).to eq '更新されたプロンプト'
@@ -148,7 +150,8 @@ RSpec.describe PromptsController, type: :request do
               is_public: @prompt.is_public,
               title: '',
               content: @prompt.content,
-              tag_name: @prompt.tags
+              tag_name: @prompt.tags,
+              group_id: 2
             }
           }
           expect(response.body).to include('markdown-area')
@@ -175,8 +178,8 @@ RSpec.describe PromptsController, type: :request do
       end
 
       it '他のユーザーのプロンプトを削除できない' do
-        other_user = FactoryBot.create(:user)
-        other_prompt = FactoryBot.create(:prompt, user: other_user)
+        other_user = FactoryBot.create(:user, group_id: 2)
+        other_prompt = FactoryBot.create(:prompt, user: other_user, group_id: 2)
 
         expect do
           delete prompt_path(other_prompt)

@@ -8,4 +8,5 @@ class Note < ApplicationRecord
   has_many   :note_tags, dependent: :destroy
   has_many   :tags, through: :note_tags
   has_one    :reference, as: :referencable, dependent: :destroy
+  belongs_to :group
 end

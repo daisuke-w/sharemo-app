@@ -12,7 +12,8 @@ class PromptForm
     :created_at,
     :updated_at,
     :tag_name,
-    :color_code
+    :color_code,
+    :group_id
   )
 
   # エラーメッセージ定義
@@ -27,7 +28,7 @@ class PromptForm
 
   def save
     ActiveRecord::Base.transaction do
-      prompt = Prompt.create(user_id:, title:, content:, category_id:, is_public:)
+      prompt = Prompt.create(user_id:, title:, content:, category_id:, is_public:, group_id:)
 
       if tag_name.present?
         tag_names = tag_name.split(',').map(&:strip)

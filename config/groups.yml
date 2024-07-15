@@ -1,0 +1,8 @@
+# 部署やチームに合わせて適宜
+# 以下のnameを増やしたり、内容を変更する
+- id: 1
+  name: '---'
+- id: 2
+  name: 'TestGroup A'
+- id: 3
+  name: 'TestGroup B'

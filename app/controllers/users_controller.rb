@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :basic_info, :notes_info, :prompts_info]
   before_action :init_user_info, only: [:show, :basic_info, :notes_info, :prompts_info]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :check_group_and_redirect, only: :show
 
   def show
   end
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :profile, :user_image)
+    params.require(:user).permit(:nickname, :email, :profile, :user_image, :group_id)
   end
 
   def set_user
@@ -59,5 +60,10 @@ class UsersController < ApplicationController
   def move_to_index
     # ログインユーザーとマイページが別人の場合は一覧ページに遷移
     redirect_to notes_path if current_user.id != @user.id
+  end
+
+  def check_group_and_redirect
+    # 同じグループではない場合は一覧ページに遷移
+    redirect_to notes_path if current_user.group_id != @user.group_id
   end
 end
