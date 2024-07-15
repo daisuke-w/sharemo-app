@@ -70,6 +70,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
+      it 'group_idが1では作成できない' do
+        @user.group_id = 1
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Group can't be blank")
+      end
     end
   end
 end

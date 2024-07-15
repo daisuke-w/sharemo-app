@@ -2,24 +2,18 @@ require 'rails_helper'
 
 RSpec.describe NotesController, type: :request do
   before do
-    @user_note = FactoryBot.create(:user)
-    @user_prompt = FactoryBot.create(:user)
-    @prompt = FactoryBot.create(:prompt, user: @user_prompt)
-    @note = FactoryBot.create(:note, user: @user_note, prompt_id: @prompt.id)
-    @public_note = FactoryBot.create(:note, user: @user_note, prompt: @prompt, is_public: true)
-    @private_note = FactoryBot.create(:note, user: @user_note, prompt: @prompt, is_public: false)
+    @user_note = FactoryBot.create(:user, group_id: 2)
+    @user_prompt = FactoryBot.create(:user, group_id: 2)
+    @prompt = FactoryBot.create(:prompt, user: @user_prompt, group_id: 2)
+    @note = FactoryBot.create(:note, user: @user_note, prompt_id: @prompt.id, group_id: 2)
+    @public_note = FactoryBot.create(:note, user: @user_note, prompt: @prompt, is_public: true, group_id: 2)
+    @private_note = FactoryBot.create(:note, user: @user_note, prompt: @prompt, is_public: false, group_id: 2)
   end
 
   describe 'GET #index' do
     context '認証されていない場合' do
-      it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
-        expect_successful_response(:get, notes_path)
-      end
-      it 'indexアクションにリクエストするとレスポンスに検索フォームが存在する' do
-        expect_element_in_response(:get, notes_path, 'search-filter-section')
-      end
-      it 'indexアクションにリクエストするとレスポンスにノートのtitleが存在する' do
-        expect_element_in_response(:get, notes_path, 'title')
+      it 'ログインページにリダイレクトされる' do
+        expect_redirect_to_login(:get, notes_path)
       end
     end
 
@@ -40,11 +34,11 @@ RSpec.describe NotesController, type: :request do
 
   describe 'GET #show' do
     context '認証されていない場合' do
-      it '公開ノートにアクセスできる' do
-        expect_successful_response(:get, note_path(@public_note))
+      it '公開ノートにはアクセスできない' do
+        expect_redirect_to_login(:get, note_path(@public_note))
       end
       it '非公開ノートにはアクセスできない' do
-        expect_redirect_to_list(:get, note_path(@private_note))
+        expect_redirect_to_login(:get, note_path(@private_note))
       end
     end
 
@@ -66,8 +60,8 @@ RSpec.describe NotesController, type: :request do
       end
 
       context '非公開ノートの所有者が別人の場合' do
-        other_user = FactoryBot.create(:user)
-        other_private_note = FactoryBot.create(:note, user: other_user, prompt: @prompt, is_public: false)
+        other_user = FactoryBot.create(:user, group_id: 2)
+        other_private_note = FactoryBot.create(:note, user: other_user, prompt: @prompt, is_public: false, group_id: 2)
 
         it '一覧ページにリダイレクトされる' do
           expect_redirect_to_list(:get, note_path(other_private_note))
@@ -122,7 +116,8 @@ RSpec.describe NotesController, type: :request do
                 title: '新しいノート',
                 content: '内容',
                 prompt_id: @prompt.id,
-                tag_name: 'tag1'
+                tag_name: 'tag1',
+                group_id: 2
               }
             }
           end.to change(Note, :count).by(1)
@@ -174,7 +169,8 @@ RSpec.describe NotesController, type: :request do
               title: '更新されたノート',
               content: @note.content,
               prompt_id: @note.prompt.id,
-              tag_name: @note.tags
+              tag_name: @note.tags,
+              group_id: 2
             }
           }
           expect(@note.reload.title).to eq '更新されたノート'
@@ -191,7 +187,8 @@ RSpec.describe NotesController, type: :request do
               title: '',
               content: @note.content,
               prompt_id: @note.prompt.id,
-              tag_name: @note.tags
+              tag_name: @note.tags,
+              group_id: 2
             }
           }
           expect(response.body).to include('markdown-area')
@@ -218,8 +215,8 @@ RSpec.describe NotesController, type: :request do
       end
 
       it '他のユーザーのノートを削除できない' do
-        other_user = FactoryBot.create(:user)
-        other_note = FactoryBot.create(:note, user: other_user, prompt: @prompt)
+        other_user = FactoryBot.create(:user, group_id: 2)
+        other_note = FactoryBot.create(:note, user: other_user, prompt: @prompt, group_id: 2)
 
         expect do
           delete note_path(other_note)

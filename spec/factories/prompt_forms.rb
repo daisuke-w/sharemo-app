@@ -4,5 +4,6 @@ FactoryBot.define do
     title       { Faker::Lorem.word }
     content     { Faker::Lorem.sentence }
     is_public   { 0 }
+    group_id    { Faker::Number.between(from: 2, to: 3) }
   end
 end
