@@ -1,12 +1,17 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :find_note, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :notes_by_category, only: [:show, :edit, :update]
+  before_action :check_group_and_redirect, only: :show
 
   def index
-    @notes = Note.includes(:user, :prompt, :tags, :reference).order(created_at: :desc)
-    @prompts = Prompt.includes(:user, :notes, :tags, :reference).order(created_at: :desc)
+    @notes = Note.includes(:user, :prompt, :tags, :reference)
+                 .where(group_id: current_user.group_id)
+                 .order(created_at: :desc)
+    @prompts = Prompt.includes(:user, :notes, :tags, :reference)
+                     .where(group_id: current_user.group_id)
+                     .order(created_at: :desc)
     @objects = (@notes + @prompts).sort_by(&:created_at).reverse
   end
 
@@ -60,7 +65,7 @@ class NotesController < ApplicationController
 
   def note_form_params
     note_form = params.require(:note_form)
-    note_form_permitted = [:title, :content, :category_id, :is_public, :tag_name, :color_code]
+    note_form_permitted = [:title, :content, :category_id, :is_public, :tag_name, :color_code, :group_id]
     note_form_permitted << :prompt_id if note_form[:prompt_id]
     permitted_params = note_form.permit(note_form_permitted).merge(user_id: current_user.id)
 
@@ -80,5 +85,10 @@ class NotesController < ApplicationController
 
   def notes_by_category
     @notes_by_category = current_user&.notes&.group_by(&:category)
+  end
+
+  def check_group_and_redirect
+    # 同じグループではない場合は一覧ページに遷移
+    redirect_to notes_path if current_user.group_id != @note.group_id
   end
 end

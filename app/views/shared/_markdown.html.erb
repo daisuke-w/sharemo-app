@@ -3,6 +3,7 @@
     <% if object.is_a?(NoteForm) %>
       <%= form.hidden_field :prompt_id, value: prompt_id %>
     <% end %>
+    <%= form.hidden_field :group_id, value: current_user.group_id %> 
     <%= form.label :category %>
     <div class="custom-field">
       <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class: 'form-control custom-select'}) %>

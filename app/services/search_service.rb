@@ -1,4 +1,8 @@
 class SearchService
+  def initialize(current_user)
+    @current_user = current_user
+  end
+
   def self.search_tags(keyword)
     return [] if keyword.blank?
 
@@ -14,7 +18,9 @@ class SearchService
     sort = params[:sort]
 
     notes = Note.includes(:user, :prompt, :tags, :reference)
+                .where(group_id: @current_user.group_id)
     prompts = Prompt.includes(:user, :notes, :tags, :reference)
+                    .where(group_id: @current_user.group_id)
 
     notes, prompts = filter_by_keyword(notes, prompts, keyword)
     notes, prompts = filter_by_category(notes, prompts, category)

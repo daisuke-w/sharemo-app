@@ -13,7 +13,8 @@ class NoteForm
     :created_at,
     :updated_at,
     :tag_name,
-    :color_code
+    :color_code,
+    :group_id
   )
 
   # エラーメッセージ定義
@@ -28,7 +29,7 @@ class NoteForm
 
   def save
     ActiveRecord::Base.transaction do
-      note = Note.create(user_id:, title:, content:, category_id:, is_public:, prompt_id:)
+      note = Note.create(user_id:, title:, content:, category_id:, is_public:, prompt_id:, group_id:)
 
       if tag_name.present?
         tag_names = tag_name.split(',').map(&:strip)

@@ -7,6 +7,7 @@ class Prompt < ApplicationRecord
   has_many   :prompt_tags, dependent: :destroy
   has_many   :tags, through: :prompt_tags
   has_one    :reference, as: :referencable, dependent: :destroy
+  belongs_to :group
 
   before_destroy :nullify_notes_prompt_id
 
