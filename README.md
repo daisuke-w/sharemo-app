@@ -8,7 +8,7 @@ Memoを整理して仲間内で共有できるアプリケーションです。
 # アプリケーションを作成した背景
 日頃から学習した内容や会話型AIでの質問や回答内容を整理したいと感じていました。  
 また、他人が得た知見や知識を共有することで学習効率が上がると考えています。  
-しかし、NotionやEvernoteなどのツールは機能が多く、初学者が使いこなすのにはハードルが高いと感じました。  
+しかし、NotionやEvernoteなどのツールは機能が多く初学者が使いこなすのにはハードルが高いと感じました。  
 そこで、本アプリケーションを作成しました。
 
 # URL
@@ -27,9 +27,13 @@ https://myapp-x863.onrender.com/
 
 # 利用方法
 ### ユーザー登録・ログイン・ログアウト
+![sign_up](https://github.com/user-attachments/assets/8c675ccf-8c42-4750-8c0c-d4ad5bfe84f6)
 ### Noteの作成
+![new_note](https://github.com/user-attachments/assets/b3c4236a-4b34-4855-8f91-6b12cd0f347f)
 ### Promptの作成
+![new_prompt](https://github.com/user-attachments/assets/a3527af4-62ec-4851-8730-144cd7118ddb)
 ### Promptに紐づくNoteの作成
+![new_note_from_prompt](https://github.com/user-attachments/assets/1849c0bd-0b26-4efd-a802-6ff33c0d38d3)
 
 # UIデザイン
 [![Image from Gyazo](https://i.gyazo.com/8f3526d23c70e4c4456ace9ed566dbde.png)](https://gyazo.com/8f3526d23c70e4c4456ace9ed566dbde)
@@ -38,6 +42,7 @@ https://myapp-x863.onrender.com/
 [![Image from Gyazo](https://i.gyazo.com/a793a924006a5e6f62365a781327ad88.png)](https://gyazo.com/a793a924006a5e6f62365a781327ad88)
 
 # 洗い出した要件
+https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TLFjg/edit?usp=sharing
 
 # DB設計
 ## ER図
@@ -146,11 +151,16 @@ https://myapp-x863.onrender.com/
 - belongs_to :referencable, polymorphic: true
 
 # 開発環境
-### フロントエンド
-HTML, CSS, JavaScript
-### バックエンド
-Ruby on Rails
-### テキストエディタ
-Visual Studio Code
-### タスク管理
-Github
+- フロントエンド
+  - HTML, CSS, JavaScript
+- バックエンド
+  - Ruby on Rails
+- テキストエディタ
+  - Visual Studio Code
+- タスク管理
+  - Github
+
+# 実装予定の機能
+- ノートの保存機能
+- 開発途中で気になった点の改修  
+  https://github.com/daisuke-w/sharemo-app/issues
