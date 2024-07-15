@@ -10,6 +10,7 @@
 | email              | メールアドレス    | string     | null: false, unique: true      |
 | encrypted_password | パスワード        | string     | null: false                    |
 | profile            | プロフィール      | text       |                                |
+| group_id           | グループID        | integer    | null: false                    |
 
 ### Association
 
@@ -26,6 +27,7 @@
 | title       | タイトル      | string     | null: false                    |
 | content     | 内容         | text        | null: false                    |
 | is_public   | 公開設定      | boolean    | default: false                 |
+| group_id    | グループID    | integer    | null: false                    |
 
 ### Association
 
@@ -68,6 +70,7 @@
 | title       | タイトル      | string     | null: false                    |
 | content     | 内容          | text       | null: false                    |
 | is_public   | 公開設定      | boolean    | default: false                 |
+| group_id    | グループID    | integer    | null: false                    |
 
 ### Association
 
