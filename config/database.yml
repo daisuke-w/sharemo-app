@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: myapp_development
+  database: sharemo_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: myapp_test
+  database: sharemo_test
 
 production:
   <<: *default
