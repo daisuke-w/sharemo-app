@@ -19,11 +19,14 @@ https://sharemo-app.onrender.com
 - Basic認証PW :3939
 - テストユーザー1
   - Email：test_user1@test.com
-  - PW：testuser1 
+  - PW：testuser1
+  - group：TestGroup A
   - Email：test_user2@test.com
-  - PW：testuser2 
+  - PW：testuser2
+  - group：TestGroup A
   - Email：test_user3@test.com
   - PW：testuser3
+  - group：TestGroup B
 
 # 利用方法
 ### ユーザー登録・ログイン・ログアウト
