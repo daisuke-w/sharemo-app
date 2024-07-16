@@ -44,6 +44,9 @@ https://sharemo-app.onrender.com
 # 洗い出した要件
 https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TLFjg/edit?usp=sharing
 
+# 機能一覧
+[![Image from Gyazo](https://i.gyazo.com/0840ae81d287c79a140913c58b4bfecd.png)](https://gyazo.com/0840ae81d287c79a140913c58b4bfecd)
+
 # DB設計
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/bfcade75ff7f37487378661a17c6566c.png)](https://gyazo.com/bfcade75ff7f37487378661a17c6566c)
