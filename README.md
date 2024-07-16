@@ -12,7 +12,7 @@ Memoを整理して仲間内で共有できるアプリケーションです。
 そこで、本アプリケーションを作成しました。
 
 # URL
-https://myapp-x863.onrender.com/
+https://sharemo-app.onrender.com
 
 # テスト用アカウント
 - Basic認証ID :admin
