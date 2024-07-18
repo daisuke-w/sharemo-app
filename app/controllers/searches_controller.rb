@@ -14,6 +14,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.permit(:keyword, :category, :tags, :type, :sort, :commit)
+    params.permit(:keyword, :category, { tags: [] }, :type, :sort, :commit)
   end
 end

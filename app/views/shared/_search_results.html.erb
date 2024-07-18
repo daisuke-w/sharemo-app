@@ -8,20 +8,20 @@
     </div>
     <div class="filter-section">
       <div class="form-group">
-        <%= label_tag :category, 'Category' %>
-        <%= select_tag :category, options_from_collection_for_select(Category.where.not(id: 1), :id, :name, params[:category]), include_blank: 'すべて', class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= label_tag :tags, 'Tag' %>
-        <%= select_tag :tags, options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tags]), include_blank: 'すべて', class: 'form-control' %>
+        <%= label_tag :sort, 'Sort' %>
+        <%= select_tag :sort, options_for_select([['新しい順', 'created_desc'], ['古い順', 'created_asc'], ['参考数順', 'reference_count_desc']], params[:sort]), class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= label_tag :type, 'Type' %>
         <%= select_tag :type, options_for_select([['すべて', ''], ['Note', 'Note'], ['Prompt', 'Prompt']], params[:type]), class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= label_tag :sort, 'Sort' %>
-        <%= select_tag :sort, options_for_select([['新しい順', 'created_desc'], ['古い順', 'created_asc'], ['参考数順', 'reference_count_desc']], params[:sort]), class: 'form-control' %>
+        <%= label_tag :category, 'Category' %>
+        <%= select_tag :category, options_from_collection_for_select(Category.where.not(id: 1), :id, :name, params[:category]), include_blank: 'すべて', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :tags, 'Tag' %>
+        <%= select_tag :tags, options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tags]), include_blank: 'すべて', class: 'form-control select2', multiple: true %>
       </div>
     </div>
   <% end %>
