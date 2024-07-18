@@ -9,7 +9,7 @@
     <div class="filter-section">
       <div class="form-group">
         <%= label_tag :category, 'Category' %>
-        <%= select_tag :category, options_from_collection_for_select(Category.all, :id, :name, params[:category]), include_blank: 'すべて', class: 'form-control' %>
+        <%= select_tag :category, options_from_collection_for_select(Category.where.not(id: 1), :id, :name, params[:category]), include_blank: 'すべて', class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= label_tag :tags, 'Tag' %>
