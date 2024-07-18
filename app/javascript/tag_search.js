@@ -52,10 +52,24 @@ function handleTagInput() {
   }
 }
 
+/**
+ * 検索フォームにselect2を実装
+ * 初期化する関数
+ */
+function initializeSelect2() {
+  $('.select2').select2({
+    placeholder: "タグを選択",
+    allowClear: true,
+    width: '100%'
+  });
+};
+
 document.addEventListener('turbo:load', function() {
   handleTagInput();
+  initializeSelect2();
 });
 
 document.addEventListener('turbo:render', function() {
   handleTagInput();
+  initializeSelect2();
 });
