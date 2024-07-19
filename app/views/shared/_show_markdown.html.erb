@@ -49,4 +49,5 @@
 </div>
 <div class="author">
   <strong>Author:</strong> <%= link_to object.user.nickname, user_path(object.user), class: 'btn btn-outline-primary btn-sm author-link' %>
+  <strong>Update:</strong> <%= object.days_since_last_update %>日前
 </div>

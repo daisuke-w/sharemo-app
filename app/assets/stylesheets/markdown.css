@@ -159,7 +159,7 @@
 }
 
 .author-link {
-  margin-left: 0.3rem;
+  margin: 0 0.3rem;
   --bs-btn-padding-y: 0rem;
   --bs-btn-padding-x: 0.1rem;
   --bs-btn-font-size: 0.8rem;
