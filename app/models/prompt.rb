@@ -1,5 +1,6 @@
 class Prompt < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  include CommonMethods
 
   belongs_to :user
   has_many   :notes

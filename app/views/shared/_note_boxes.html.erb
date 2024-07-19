@@ -15,6 +15,7 @@
     <% end %>
   </div>
   <div class="title"><%= object.title %></div>
+  <div class="date"><%= object.days_since_last_update %>日前</div>
   <div class="footer">
     <%= link_to "Detail", dynamic_path(object, :show), class: 'btn details-button' %>
     <div class="informative"
