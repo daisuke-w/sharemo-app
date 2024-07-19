@@ -8,13 +8,16 @@
     <% end %>
   </div>
   <div>
-  <strong>NickName:</strong> <%= @user.nickname %>
+    <strong>NickName:</strong> <%= @user.nickname %>
   </div>
   <div>
-  <strong>Email:</strong> <%= @user.email %>
+    <strong>Email:</strong> <%= @user.email %>
   </div>
   <div>
-  <strong>Profile:</strong> <%= simple_format(@user.profile) %>
+    <strong>Group:</strong> <%= @user.group.name %>
+  </div>
+  <div>
+    <strong>Profile:</strong> <%= simple_format(@user.profile) %>
   </div>
   <div class="content-info container mt-4">
     <div class="row mt-4">
