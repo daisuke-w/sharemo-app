@@ -26,9 +26,7 @@ class SearchService
     notes, prompts = filter_by_category(notes, prompts, category)
     notes, prompts = filter_by_tags(notes, prompts, tags)
     notes, prompts = filter_by_type(notes, prompts, type)
-    notes, prompts = order_results(notes, prompts, sort)
-
-    { notes:, prompts: }
+    order_results(notes, prompts, sort)
   end
 
   # キーワードで検索する
@@ -75,19 +73,23 @@ class SearchService
 
   # 結果を並べ替える
   def order_results(notes, prompts, sort)
+    objects = notes + prompts
     if sort.present?
       case sort
       when 'created_desc'
-        notes = notes.order(created_at: :desc)
-        prompts = prompts.order(created_at: :desc)
+        objects.sort_by! { |obj| [obj.created_at, obj.updated_at].max }.reverse!
       when 'created_asc'
-        notes = notes.order(created_at: :asc)
-        prompts = prompts.order(created_at: :asc)
+        objects.sort_by! { |obj| [obj.created_at, obj.updated_at].max }
       when 'reference_count_desc'
-        notes = notes.left_joins(:reference).order('references.click_count DESC')
-        prompts = prompts.left_joins(:reference).order('references.click_count DESC')
+        objects.sort_by! { |obj| obj_click_count(obj) }.reverse!
       end
     end
-    [notes, prompts]
+    objects
+  end
+
+  private
+
+  def obj_click_count(obj)
+    obj.reference&.click_count
   end
 end

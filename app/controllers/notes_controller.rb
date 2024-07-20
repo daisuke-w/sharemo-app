@@ -8,11 +8,12 @@ class NotesController < ApplicationController
   def index
     @notes = Note.includes(:user, :prompt, :tags, :reference)
                  .where(group_id: current_user.group_id)
-                 .order(created_at: :desc)
     @prompts = Prompt.includes(:user, :notes, :tags, :reference)
                      .where(group_id: current_user.group_id)
-                     .order(created_at: :desc)
-    @objects = (@notes + @prompts).sort_by(&:created_at).reverse
+
+    @objects = (@notes + @prompts).sort_by do |obj|
+      [obj.created_at, obj.updated_at].max
+    end.reverse
   end
 
   def new

@@ -40,12 +40,12 @@ class UserInfoService
 
   # ユーザーのノートを取得
   def notes
-    @user.notes.order(created_at: :desc)
+    @user.notes.order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
   end
 
   # ユーザーのプロンプトを取得
   def prompts
-    @user.prompts.order(created_at: :desc)
+    @user.prompts.order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
   end
 
   # カテゴリ別にユーザーのノートをグループ化して取得
