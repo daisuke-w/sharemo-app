@@ -5,10 +5,7 @@ class SearchesController < ApplicationController
   end
 
   def results
-    search_results = SearchService.new(current_user).search_notes_and_prompts(search_params)
-    @notes = search_results[:notes]
-    @prompts = search_results[:prompts]
-    @objects = (@notes + @prompts)
+    @objects = SearchService.new(current_user).search_notes_and_prompts(search_params)
   end
 
   private
