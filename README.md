@@ -170,5 +170,5 @@ https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TL
 - ノートの保存機能
 - 開発途中で気になった点の改修  
   https://github.com/daisuke-w/sharemo-app/issues
-- 企業内で利用する場合は組織図等と紐づけて認証を行う機能
+- 企業内で利用する場合は組織図等と紐づけて認証を行う機能  
   -現在はymlファイルにグループを記述している   
