@@ -171,4 +171,7 @@ https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TL
 - 開発途中で気になった点の改修  
   https://github.com/daisuke-w/sharemo-app/issues
 - 企業内で利用する場合は組織図等と紐づけて認証を行う機能  
-  -現在はymlファイルにグループを記述している   
+  - 現在はymlファイルにグループを記述している
+- ユーザー管理機能
+  - 管理者は不要ユーザーを削除できる機能
+  - 管理者はMemoの所有権を変更できる機能
