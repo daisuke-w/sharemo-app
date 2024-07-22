@@ -50,12 +50,12 @@ class UserInfoService
 
   # カテゴリ別にユーザーのノートをグループ化して取得
   def notes_by_category
-    @user.notes.group_by(&:category)
+    @user.notes.group_by(&:category).sort_by { |category, _notes| category.id }
   end
 
   # カテゴリ別にユーザーのプロンプトをグループ化して取得
   def prompts_by_category
-    @user.prompts.group_by(&:category)
+    @user.prompts.group_by(&:category).sort_by { |category, _notes| category.id }
   end
 
   # ユーザーの全ノート数を取得

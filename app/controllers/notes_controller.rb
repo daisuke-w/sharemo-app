@@ -85,7 +85,11 @@ class NotesController < ApplicationController
   end
 
   def notes_by_category
-    @notes_by_category = current_user&.notes&.group_by(&:category)
+    @notes_by_category = if current_user.present?
+                           current_user.notes.group_by(&:category).sort_by { |category, _notes| category.id }
+                         else
+                           []
+                         end
   end
 
   def check_group_and_redirect
