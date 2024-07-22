@@ -71,7 +71,11 @@ class PromptsController < ApplicationController
   end
 
   def prompts_by_category
-    @prompts_by_category = current_user&.prompts&.group_by(&:category)
+    @prompts_by_category = if current_user.present?
+                             current_user.prompts.group_by(&:category).sort_by { |category, _prompts| category.id }
+                           else
+                             []
+                           end
   end
 
   def check_group_and_redirect
