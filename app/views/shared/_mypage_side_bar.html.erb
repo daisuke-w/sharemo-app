@@ -10,9 +10,10 @@
     <% else %>
       <% if is_current_user %>
         <div class="profile-icon rounded-circle mb-3">
-          <label>
+          <label class="tooltip-container">
             <i class="bi bi-person-plus-fill mb-3"></i>
             <%= f.file_field :user_image, class: 'hidden' %>
+            <span class="tooltip-text">写真を登録できます</span>
           </label>
         </div>
         <%= f.submit 'Update', class: 'btn btn-warning' %>
@@ -46,3 +47,6 @@
     </ul>
   </div>
 <% end %>
+<div class="mypage_sidebar-footer">
+  <%= link_to 'Back', notes_path, class: 'btn btn-secondary' %>
+</div>

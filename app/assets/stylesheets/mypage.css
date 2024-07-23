@@ -69,3 +69,48 @@ td:empty::before {
   content: "ー";
   color: gray;
 }
+
+.mypage_sidebar-footer {
+  text-align: right;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    font-size: 11px;
+    width: 120px;
+    background-color: #00bfff;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 75%;
+    margin-left: -45px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text:before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: -1px;
+  margin-top: -15px;
+  border: 8px solid transparent;
+  border-left: 10px solid #00bfff;
+  z-index: 0;
+  -webkit-transform: rotate(25deg);
+  transform: rotate(25deg);
+}

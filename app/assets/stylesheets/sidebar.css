@@ -103,10 +103,9 @@
 
 .link-body-emphasis {
   color: #000;
-  display: block;
-  width: 100%;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .link-body-emphasis:hover {
