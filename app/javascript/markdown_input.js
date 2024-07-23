@@ -27,6 +27,7 @@ function initializeEasyMDE() {
         }, "|",
         "preview", "guide"
       ],
+      maxHeight: "250px",
       renderingConfig: {
         codeSyntaxHighlighting: true
       }
