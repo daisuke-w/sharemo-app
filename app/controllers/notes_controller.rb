@@ -7,15 +7,15 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.includes(:user, :prompt, :tags, :reference)
-                 .where(group_id: current_user.group_id)
+                 .where(group_id: current_user.group_id, is_public: true)
     @prompts = Prompt.includes(:user, :notes, :tags, :reference)
-                     .where(group_id: current_user.group_id)
+                     .where(group_id: current_user.group_id, is_public: true)
 
     @objects = (@notes + @prompts).sort_by do |obj|
       [obj.created_at, obj.updated_at].max
     end.reverse
 
-    @objects = Kaminari.paginate_array(@objects).page(params[:page]).per(21)
+    @objects = Kaminari.paginate_array(@objects).page(params[:page]).per(20)
   end
 
   def new
