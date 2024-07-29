@@ -236,3 +236,84 @@
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   margin-right: 0px;
 }
+
+/** ページネイション用 **/
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border: solid 2px #111;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.page a {
+  text-decoration: none;
+  color: black;
+}
+
+.page a:hover {
+  color: white;
+}
+
+.current {
+  background: #0d6efd;
+  color: #fff;
+  pointer-events: none;
+}
+
+.page:not(.current):hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.pagination > * + * {
+  margin-left: -2px;
+}
+
+.prev, .next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: solid 2px #111;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.prev {
+  border-radius: 100% 0 0 100% / 90%;
+}
+
+.next {
+  border-radius: 0 100% 100% 0 / 90%;
+}
+
+.prev:hover, .next:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.prev a, .next a {
+  text-decoration: none;
+  color: black;
+}
+
+.prev a:hover, .next a:hover {
+  color: white;
+}
+
+.first, .last {
+  display: none;
+}

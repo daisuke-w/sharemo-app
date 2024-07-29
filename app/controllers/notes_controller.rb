@@ -14,6 +14,8 @@ class NotesController < ApplicationController
     @objects = (@notes + @prompts).sort_by do |obj|
       [obj.created_at, obj.updated_at].max
     end.reverse
+
+    @objects = Kaminari.paginate_array(@objects).page(params[:page]).per(21)
   end
 
   def new
