@@ -18,9 +18,9 @@ class SearchService
     sort = params[:sort]
 
     notes = Note.includes(:user, :prompt, :tags, :reference)
-                .where(group_id: @current_user.group_id)
+                .where(group_id: @current_user.group_id, is_public: true)
     prompts = Prompt.includes(:user, :notes, :tags, :reference)
-                    .where(group_id: @current_user.group_id)
+                    .where(group_id: @current_user.group_id, is_public: true)
 
     notes, prompts = filter_by_keyword(notes, prompts, keyword)
     notes, prompts = filter_by_category(notes, prompts, category)

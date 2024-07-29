@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
 
   def results
     @objects = SearchService.new(current_user).search_notes_and_prompts(search_params)
+    @objects = Kaminari.paginate_array(@objects).page(params[:page]).per(20)
   end
 
   private
