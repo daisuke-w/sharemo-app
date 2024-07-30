@@ -20,6 +20,8 @@ namespace :db do
         file.write("User.delete_all\n")
 
         # User
+        # PWは登録した後で直接編集する必要あり
+        file.write("# PWは登録した後で直接編集する必要あり")
         User.find_each do |user|
           nickname = user.nickname.gsub("'", "\\\\'")
           email = user.email.gsub("'", "\\\\'")
