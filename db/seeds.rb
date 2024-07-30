@@ -1,32 +1,58 @@
 # db/seeds.rb
 
-User.delete_all
-User.create!(nickname: 'testuser1', email: 'test_user1@test.com', encrypted_password: '$2a$12$v7VrWBScRrk9xhKRGSIUquIHmWMwPzK78E3R0n8PqXR6PoJSGrspG', group_id: 2)
-User.create!(nickname: 'testuser2', email: 'test_user2@test.com', encrypted_password: '$2a$12$2FGo8UU33TM9XzenS68PNubmEWW3t7QgAIjS6CfNppMaAlPgHx4fe', group_id: 2)
-User.create!(nickname: 'testuser3', email: 'test_user3@test.com', encrypted_password: '$2a$12$x/NHToGrWzOwjW2qKVxKm.t.rZeouPAuZyc72CMI2C0..7pYtkYuG', group_id: 2)
-User.create!(nickname: 'testuser4', email: 'test_user4@test.com', encrypted_password: '$2a$12$Rso0x0zxkb/aY9kkaF0TXe/3JG/Yqd7oBekUeCB2Ud190Q/cH3xOO', group_id: 3)
-User.create!(nickname: 'testuser5', email: 'test_user5@test.com', encrypted_password: '$2a$12$8pmLSX48/zXywk8KeSnnPexR/n7jG2iY9U3o.ThLuX79RhGhxI5lO', group_id: 3)
-Tag.delete_all
-Tag.create!(tag_name: 'ruby', color_code: 8)
-Tag.create!(tag_name: 'Gem', color_code: 10)
-Tag.create!(tag_name: 'html', color_code: 10)
-Tag.create!(tag_name: 'css', color_code: 7)
-Tag.create!(tag_name: '設計', color_code: 6)
-Tag.create!(tag_name: 'Git hub', color_code: 6)
-Tag.create!(tag_name: 'Test', color_code: 5)
-Tag.create!(tag_name: 'Linux', color_code: 1)
-Tag.create!(tag_name: 'scss', color_code: 4)
-Tag.create!(tag_name: 'like', color_code: 2)
-Tag.create!(tag_name: 'japan', color_code: 6)
-Tag.create!(tag_name: 'js', color_code: 9)
-Tag.create!(tag_name: 'AIモデル', color_code: 4)
-Tag.create!(tag_name: 'javascript', color_code: 9)
-Tag.create!(tag_name: 'Windows', color_code: 3)
-Tag.create!(tag_name: 'OS', color_code: 9)
-Tag.create!(tag_name: '環境構築', color_code: 10)
-Tag.create!(tag_name: '資料作成', color_code: 8)
+PromptTag.delete_all
+NoteTag.delete_all
+Prompt.delete_all
 Note.delete_all
-Note.create!(user: User.find(1), title: 'Redcarpet実装に関して', content: '#### ヘルパーメソッド実装理由
+Reference.delete_all
+Tag.delete_all
+User.delete_all
+User.create!(id: 1, nickname: 'testuser1', email: 'test_user1@test.com', password: '$2a$12$v7VrWBScRrk9xhKRGSIUquIHmWMwPzK78E3R0n8PqXR6PoJSGrspG', group_id: 2)
+User.create!(id: 2, nickname: 'testuser2', email: 'test_user2@test.com', password: '$2a$12$2FGo8UU33TM9XzenS68PNubmEWW3t7QgAIjS6CfNppMaAlPgHx4fe', group_id: 2)
+User.create!(id: 3, nickname: 'testuser3', email: 'test_user3@test.com', password: '$2a$12$x/NHToGrWzOwjW2qKVxKm.t.rZeouPAuZyc72CMI2C0..7pYtkYuG', group_id: 2)
+User.create!(id: 4, nickname: 'testuser4', email: 'test_user4@test.com', password: '$2a$12$Rso0x0zxkb/aY9kkaF0TXe/3JG/Yqd7oBekUeCB2Ud190Q/cH3xOO', group_id: 3)
+User.create!(id: 5, nickname: 'testuser5', email: 'test_user5@test.com', password: '$2a$12$8pmLSX48/zXywk8KeSnnPexR/n7jG2iY9U3o.ThLuX79RhGhxI5lO', group_id: 3)
+Tag.create!(id: 1, tag_name: 'ruby', color_code: 8)
+Tag.create!(id: 2, tag_name: 'Gem', color_code: 10)
+Tag.create!(id: 3, tag_name: 'html', color_code: 10)
+Tag.create!(id: 4, tag_name: 'css', color_code: 7)
+Tag.create!(id: 5, tag_name: '設計', color_code: 6)
+Tag.create!(id: 6, tag_name: 'Git hub', color_code: 6)
+Tag.create!(id: 7, tag_name: 'Test', color_code: 5)
+Tag.create!(id: 8, tag_name: 'Linux', color_code: 1)
+Tag.create!(id: 9, tag_name: 'scss', color_code: 4)
+Tag.create!(id: 10, tag_name: 'like', color_code: 2)
+Tag.create!(id: 11, tag_name: 'japan', color_code: 6)
+Tag.create!(id: 12, tag_name: 'js', color_code: 9)
+Tag.create!(id: 13, tag_name: 'AIモデル', color_code: 4)
+Tag.create!(id: 14, tag_name: 'javascript', color_code: 9)
+Tag.create!(id: 15, tag_name: 'Windows', color_code: 3)
+Tag.create!(id: 16, tag_name: 'OS', color_code: 9)
+Tag.create!(id: 17, tag_name: '環境構築', color_code: 10)
+Tag.create!(id: 18, tag_name: '資料作成', color_code: 8)
+Prompt.create!(id: 2, user: User.find(2), title: '容量確認手順', content: 'あなたはLinux開発に精通したプロのITエンジニアです。
+以下の\# {動作}を行うLinuxコマンドを教えてください。
+また、コマンドを叩いて特定、削除するまでのプロセスをコマンド結果と共に記載してください。
+コマンド結果の具体的な値などはダミーであなたが考えてください。
+
+\# {動作}
+どのフォルダが容量を圧迫しているのかを特定して削除する', category_id: 12, is_public: true, group_id: 2)
+Prompt.create!(id: 3, user: User.find(4), title: 'TEST', content: 'test', category_id: 3, is_public: false, group_id: 3)
+Prompt.create!(id: 6, user: User.find(1), title: 'DB設計の指示', content: '### DB設計について
+
+1.世の中に存在しているWebサイトを題材にしてテーブル名とカラム名を教えてください
+　どのWebサイトを題材にしたかも教えてください
+2.上記のテーブルの制約についてカラム毎に教えてください
+3.上記をマークダウン形式で文字としてコピーできるようにまとめてください', category_id: 5, is_public: true, group_id: 2)
+Prompt.create!(id: 7, user: User.find(2), title: 'リード文作成指示', content: '以下のインプットからコンテンツを想像しリード文と説明文を考えてください。
+
+#インプット
+{自由入力}
+
+#アウトプット
+・リード文
+・コンテンツ説明文', category_id: 12, is_public: true, group_id: 2)
+Note.create!(id: 1, user: User.find(1), title: 'Redcarpet実装に関して', content: '#### ヘルパーメソッド実装理由
 * RailsアプリケーションでMarkdownをHTMLに変換するためのヘルパーメソッドを定義
 * ヘルパーメソッドを使うことで、アプリケーション内の複数のビューで同じMarkdownの変換処理を共通化できる
 
@@ -39,7 +65,7 @@ Note.create!(user: User.find(1), title: 'Redcarpet実装に関して', content: 
 * Markdown処理に追加の機能や構文を提供するための拡張機能の設定
 	* autolink: 自動的にURLやメールアドレスをリンクに変換する機能を有効にするかどうかを指定
 	* uperscript: 上付き文字（例: x²）をサポートするかどうかを指定', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'rel, target属性について', content: '* rel属性: rel: 'nofollow'
+Note.create!(id: 2, user: User.find(1), title: 'rel, target属性について', content: '* rel属性: rel: \'nofollow\'
 	* リンクの関係性を示す nofollowは、検索エンジンのクローラーに対してリンクをたどらないように指示するための属性
 	* リンクを経由したページへのSEO効果が減少する
 &nbsp;
@@ -47,14 +73,14 @@ Note.create!(user: User.find(1), title: 'rel, target属性について', content
 * target属性: target: "\_blank"
 	* リンクを開く際のターゲットウィンドウを指定
 	* \_blankを指定すると、リンクを新しいタブやウィンドウで開く', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'GithubのソースをVSCodeのようにして見る方法', content: '* Git hubにアクセスしてURLを変更するだけでVSCodeのようにソースコードを見ることができる
+Note.create!(id: 3, user: User.find(1), title: 'GithubのソースをVSCodeのようにして見る方法', content: '* Git hubにアクセスしてURLを変更するだけでVSCodeのようにソースコードを見ることができる
 	* やり方
 	* 例)**1s**をつけるだけ
 		* github.com/oivoodoo/devisemasquerade
 		* github**1s**.com/oivoodoo/devise_masquerade
 		
 ', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'Ruby on Railsとは', content: '#### Ruby on Railsの特徴
+Note.create!(id: 5, user: User.find(2), title: 'Ruby on Railsとは', content: '#### Ruby on Railsの特徴
 * 設計ルールが決まっている為シンプルに記述できる
 * 開発補助ツールが豊富
 * 日本語の参考文献が豊富
@@ -72,12 +98,12 @@ Note.create!(user: User.find(2), title: 'Ruby on Railsとは', content: '#### Ru
 
 ##### rails db:drop コマンド
 * データベースを削除する', category_id: 2, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'text_areaに入力した改行を反映させて表示', content: '#### 入力
+Note.create!(id: 6, user: User.find(2), title: 'text_areaに入力した改行を反映させて表示', content: '#### 入力
 * form_withヘルパーを使用してテキストエリア入力欄を作成
 
 ```ruby
 <%= form_with model: current_user, local: true do |f|%>
-	<div class='field-input'>
+	<div class=\'field-input\'>
 		<%= f.text_area :profile %>
 	</div>
 <% end %>
@@ -94,7 +120,7 @@ Note.create!(user: User.find(2), title: 'text_areaに入力した改行を反映
 <%= simple_format(current_user.profile) %>
 ```
 ', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'モデル、ヘルパー、サービスの使い分け', content: 'コントローラーにメソッドが多くなり肥大化する場合、それらをコントローラーから分離することは一般的に推奨されている。
+Note.create!(id: 8, user: User.find(2), title: 'モデル、ヘルパー、サービスの使い分け', content: 'コントローラーにメソッドが多くなり肥大化する場合、それらをコントローラーから分離することは一般的に推奨されている。
 
 ##### モデル
 * ビジネスロジックがデータに密接に関連している場合や、データベースの操作やデータのバリデーションを含む場合に適している。
@@ -107,7 +133,7 @@ Note.create!(user: User.find(2), title: 'モデル、ヘルパー、サービス
 ##### サービス
 * ビジネスロジックやデータ操作を集約するのに最適な場所。
 * コントローラーで使用する複数のメソッドをひとまとめにして、より再利用可能な形で管理することができる。', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'cssとscssの違いについて', content: '#### CSS (Cascading Style Sheets)
+Note.create!(id: 9, user: User.find(1), title: 'cssとscssの違いについて', content: '#### CSS (Cascading Style Sheets)
 * 基本的なスタイルシート言語：HTML要素のスタイルを指定するための言語。
 * シンプルな構文：CSSはシンプルで、セレクタとプロパティのペアでスタイルを指定。
 
@@ -190,7 +216,7 @@ h1 {
 ##### 使い分けポイント
 * ミックスインはパラメータを使って柔軟にスタイルを生成する際に適している。
 * 継承はスタイルの共通化と一貫性を保ちたい場合に適している。', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(3), title: '容量確認_ChatGPT返答', content: '### Linuxでフォルダ容量を特定して削除するプロセス
+Note.create!(id: 34, user: User.find(3), title: '容量確認_ChatGPT返答', content: '### Linuxでフォルダ容量を特定して削除するプロセス
 
 1. **ディスク使用量の確認**
    まず、`df`コマンドを使ってディスク全体の使用状況を確認します。
@@ -277,7 +303,7 @@ Note.create!(user: User.find(3), title: '容量確認_ChatGPT返答', content: '
    /dev/sda2       200G   50G  150G  25% /home
 	 ```
 	 /dev/sda1の使用量が減少していることが確認できます。', category_id: 12, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'Claude 3.5 Sonnet（クロード 3.5 ソネット）', content: '#### Claude 3.5 Sonnet （クロード 3.5 ソネット）とは
+Note.create!(id: 36, user: User.find(1), title: 'Claude 3.5 Sonnet（クロード 3.5 ソネット）', content: '#### Claude 3.5 Sonnet （クロード 3.5 ソネット）とは
 * 2024年6月に登場した最新のAIモデル
 * Anthropicが開発
 * 処理速度が2倍、コストが5分の1という驚異的な性能向上に加え、強化されたマルチモーダル能力と高度な推論力を備えている
@@ -298,8 +324,8 @@ Claude 3.5 Sonnetは、ブラウザ・アプリ版共に無料で利用するこ
 #### Claude 3.5 Sonnet URL
 https://www.anthropic.com/news/claude-3-5-sonnet
 ', category_id: 8, is_public: false, group_id: 2)
-Note.create!(user: User.find(4), title: 'TEST', content: 'test', category_id: 6, is_public: true, group_id: 3)
-Note.create!(user: User.find(2), title: 'プログラムの記述方法', content: '### 以下は全て同じ処理になる
+Note.create!(id: 37, user: User.find(4), title: 'TEST', content: 'test', category_id: 6, is_public: true, group_id: 3)
+Note.create!(id: 40, user: User.find(2), title: 'プログラムの記述方法', content: '### 以下は全て同じ処理になる
 
 ###### do ... endを利用した記述
 ```ruby
@@ -321,7 +347,7 @@ do ... end は処理の中身が長いブロックに使われる
 ```
 シンタックスシュガーはコードをより簡潔で読みやすくするために使われる
 ', category_id: 2, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'DB設計の指示_ChatGPT返答', content: '## Facebookを題材にしたデータベース設計
+Note.create!(id: 42, user: User.find(1), title: 'DB設計の指示_ChatGPT返答', content: '## Facebookを題材にしたデータベース設計
 
 ### users テーブル
 
@@ -343,7 +369,7 @@ Note.create!(user: User.find(1), title: 'DB設計の指示_ChatGPT返答', conte
 | content             | TEXT            | NOT NULL                             | 
 | created_at          | TIMESTAMP       | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | 
 | updated_at          | TIMESTAMP       | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | ', category_id: 8, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'rails dbコマンドについて', content: '#### データベースの作成
+Note.create!(id: 43, user: User.find(1), title: 'rails dbコマンドについて', content: '#### データベースの作成
 ```bush
 rails db:create
 ```
@@ -395,7 +421,7 @@ rails db:migrate:reset
 ```
 シードファイルは読み込まない
 rails db:drop → rails db:create → rails db:migrate', category_id: 5, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: '投稿時刻の表示を日本時刻に変更する方法', content: '### 投稿時刻の表示を日本時刻に変更する方法
+Note.create!(id: 44, user: User.find(1), title: '投稿時刻の表示を日本時刻に変更する方法', content: '### 投稿時刻の表示を日本時刻に変更する方法
 * 時刻の設定は、Railsのapplication.rbという設定ファイルに以下を追記する
 
 ```ruby
@@ -404,7 +430,7 @@ module ChatApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0 
     config.i18n.default_locale = :ja  # アプリケーションのデフォルトのロケールを日本語 (:ja) に設定
-    config.time_zone = 'Tokyo'        # アプリケーションのデフォルトのタイムゾーンを「東京」（日本標準時）に設定
+    config.time_zone = \'Tokyo\'        # アプリケーションのデフォルトのタイムゾーンを「東京」（日本標準時）に設定
 		# 中略
 ```
 
@@ -424,11 +450,11 @@ ja:
 ```ruby
 <%= l hoge.created_at %>
 ```', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'Javascriptロードイベントについて', content: '## ロードの種類と用途
+Note.create!(id: 45, user: User.find(1), title: 'Javascriptロードイベントについて', content: '## ロードの種類と用途
 
 ```javascript
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('ページの内容が読み込まれました！');
+document.addEventListener(\'DOMContentLoaded\', () => {
+  console.log(\'ページの内容が読み込まれました！\');
   // ページが読み込まれた後に動かしたいコードを書く
 });
 ```
@@ -466,11 +492,11 @@ Turboを使っているアプリで、ページの内容が変わるたびに動
 - **使用目的**  
 ページを離れた後に何かを実行したいときに使う  
 例えば、ユーザーの行動を追跡するときなど', category_id: 2, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'WindowsOSバージョン調べ方', content: '1. windowsボタンを押す
+Note.create!(id: 46, user: User.find(1), title: 'WindowsOSバージョン調べ方', content: '1. windowsボタンを押す
 2. 「winver」と入力しenterキーを押す
 3. windows OSのバージョンとビルド番号を確認
 「Windowsのバージョン情報」が表示される為確認', category_id: 12, is_public: true, group_id: 2)
-Note.create!(user: User.find(1), title: 'WSL有効化', content: '#### 想定バージョン
+Note.create!(id: 47, user: User.find(1), title: 'WSL有効化', content: '#### 想定バージョン
 Windows10、もしくはWindows11
 
 #### WindowsOSバージョン調べ方
@@ -510,20 +536,20 @@ wsl --status
 wsl --install Ubuntu
 ```
 ５．起動したUbuntuでユーザー名とパスワードを入力して Enter', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'ルーティングの設定', content: '#### ルーティングの記述方法
+Note.create!(id: 48, user: User.find(2), title: 'ルーティングの設定', content: '#### ルーティングの記述方法
 ##### 基本的な記述
 
 ```ruby
 Rails.application.routes.draw do
- HTTPメソッド 'URIパターン', to: 'コントローラー名#アクション名'
+ HTTPメソッド \'URIパターン\', to: \'コントローラー名#アクション名\'
 end
 ```
 ```ruby
 Rails.application.routes.draw do
- get 'hoges', to: 'hoges#index'
+ get \'hoges\', to: \'hoges#index\'
 end
 ```
-上記はget 'hoges'と記述することも可能である。
+上記はget \'hoges\'と記述することも可能である。
 
 ##### resourcesメソッド
 * 7つのアクション全てのルートをまとめて作成できる
@@ -547,7 +573,7 @@ end
 ##### ルートパスの設定
 ```ruby
 Rails.application.routes.draw do
-  root 'hoges#index'
+  root \'hoges#index\'
 end
 ```
 
@@ -559,7 +585,7 @@ end
 Rails.application.routes.draw do
   resources :hoges do
     collection do
-      get 'fuga'
+      get \'fuga\'
     end
   end
 end
@@ -569,7 +595,7 @@ end
 Rails.application.routes.draw do
   resources :hoges do
     member do
-      get 'fuga'
+      get \'fuga\'
     end
   end
 end
@@ -586,7 +612,7 @@ rails routes
 Prefix           Verb    URI                                 Pattern
 search_hoge      GET    /hoges/search(.:format)       hoges#search
 ```', category_id: 3, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'リード文作成指示_ChatGPT返答', content: '```
+Note.create!(id: 49, user: User.find(2), title: 'リード文作成指示_ChatGPT返答', content: '```
 以下のインプットからコンテンツを想像しリード文と説明文を考えてください。
 
 #インプット
@@ -607,7 +633,7 @@ Note.create!(user: User.find(2), title: 'リード文作成指示_ChatGPT返答'
 
 コンテンツ説明文:
 このツールは、学習内容を効率的に整理するための直感的なインターフェースを提供します。マークダウン形式での入力に対応し、余計な機能を省いたシンプルな設計で操作も簡単です。メモは大きく分けてNoteとPromptの2種類から作成でき、カテゴリーやタグで細かく分類することができます。これにより、学習内容を体系的に整理し、必要な情報にすばやくアクセスすることが可能です。', category_id: 12, is_public: true, group_id: 2)
-Note.create!(user: User.find(2), title: 'Ruby on Rails の基本理念', content: '### DRY(Don’t Repeat Yourself)
+Note.create!(id: 50, user: User.find(2), title: 'Ruby on Rails の基本理念', content: '### DRY(Don’t Repeat Yourself)
 * 「同じ情報を繰り返し定義しない」
 * 可読性の向上や、コード量を減らすことによりアプリケーションの動作が早くなる
 
@@ -636,81 +662,55 @@ Note.create!(user: User.find(2), title: 'Ruby on Rails の基本理念', content
 
 
 ', category_id: 3, is_public: true, group_id: 2)
-Prompt.delete_all
-Prompt.create!(user: User.find(2), title: '容量確認手順', content: 'あなたはLinux開発に精通したプロのITエンジニアです。
-以下の\# {動作}を行うLinuxコマンドを教えてください。
-また、コマンドを叩いて特定、削除するまでのプロセスをコマンド結果と共に記載してください。
-コマンド結果の具体的な値などはダミーであなたが考えてください。
-
-\# {動作}
-どのフォルダが容量を圧迫しているのかを特定して削除する', category_id: 12, is_public: true, group_id: 2)
-Prompt.create!(user: User.find(4), title: 'TEST', content: 'test', category_id: 3, is_public: false, group_id: 3)
-Prompt.create!(user: User.find(1), title: 'DB設計の指示', content: '### DB設計について
-
-1.世の中に存在しているWebサイトを題材にしてテーブル名とカラム名を教えてください
-　どのWebサイトを題材にしたかも教えてください
-2.上記のテーブルの制約についてカラム毎に教えてください
-3.上記をマークダウン形式で文字としてコピーできるようにまとめてください', category_id: 5, is_public: true, group_id: 2)
-Prompt.create!(user: User.find(2), title: 'リード文作成指示', content: '以下のインプットからコンテンツを想像しリード文と説明文を考えてください。
-
-#インプット
-{自由入力}
-
-#アウトプット
-・リード文
-・コンテンツ説明文', category_id: 12, is_public: true, group_id: 2)
-NoteTag.delete_all
-NoteTag.create!(note: Note.find(1), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(1), tag: Tag.find(2))
-NoteTag.create!(note: Note.find(2), tag: Tag.find(3))
-NoteTag.create!(note: Note.find(2), tag: Tag.find(4))
-NoteTag.create!(note: Note.find(5), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(8), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(6), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(9), tag: Tag.find(4))
-NoteTag.create!(note: Note.find(9), tag: Tag.find(9))
-NoteTag.create!(note: Note.find(34), tag: Tag.find(8))
-NoteTag.create!(note: Note.find(3), tag: Tag.find(6))
-NoteTag.create!(note: Note.find(37), tag: Tag.find(7))
-NoteTag.create!(note: Note.find(40), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(42), tag: Tag.find(5))
-NoteTag.create!(note: Note.find(43), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(44), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(45), tag: Tag.find(14))
-NoteTag.create!(note: Note.find(46), tag: Tag.find(15))
-NoteTag.create!(note: Note.find(46), tag: Tag.find(16))
-NoteTag.create!(note: Note.find(47), tag: Tag.find(17))
-NoteTag.create!(note: Note.find(48), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(49), tag: Tag.find(18))
-NoteTag.create!(note: Note.find(50), tag: Tag.find(1))
-NoteTag.create!(note: Note.find(36), tag: Tag.find(13))
-PromptTag.delete_all
-PromptTag.create!(prompt: Prompt.find(2), tag: Tag.find(8))
-PromptTag.create!(prompt: Prompt.find(3), tag: Tag.find(7))
-PromptTag.create!(prompt: Prompt.find(6), tag: Tag.find(5))
-PromptTag.create!(prompt: Prompt.find(7), tag: Tag.find(18))
-Reference.delete_all
-Reference.create!(referencable: Note.find(1), click_count: 3)
-Reference.create!(referencable: Note.find(2), click_count: 2)
-Reference.create!(referencable: Note.find(3), click_count: 17)
-Reference.create!(referencable: Note.find(5), click_count: 3)
-Reference.create!(referencable: Prompt.find(2), click_count: 9)
-Reference.create!(referencable: Note.find(6), click_count: 7)
-Reference.create!(referencable: Note.find(8), click_count: 6)
-Reference.create!(referencable: Note.find(9), click_count: 8)
-Reference.create!(referencable: Note.find(34), click_count: 1)
-Reference.create!(referencable: Note.find(36), click_count: 0)
-Reference.create!(referencable: Note.find(37), click_count: 0)
-Reference.create!(referencable: Prompt.find(3), click_count: 0)
-Reference.create!(referencable: Note.find(40), click_count: 0)
-Reference.create!(referencable: Prompt.find(6), click_count: 0)
-Reference.create!(referencable: Note.find(42), click_count: 0)
-Reference.create!(referencable: Note.find(43), click_count: 1)
-Reference.create!(referencable: Note.find(44), click_count: 0)
-Reference.create!(referencable: Note.find(45), click_count: 0)
-Reference.create!(referencable: Note.find(46), click_count: 0)
-Reference.create!(referencable: Note.find(47), click_count: 0)
-Reference.create!(referencable: Note.find(48), click_count: 0)
-Reference.create!(referencable: Prompt.find(7), click_count: 0)
-Reference.create!(referencable: Note.find(49), click_count: 0)
-Reference.create!(referencable: Note.find(50), click_count: 0)
+PromptTag.create!(id: 2, prompt: Prompt.find(2), tag: Tag.find(8))
+PromptTag.create!(id: 3, prompt: Prompt.find(3), tag: Tag.find(7))
+PromptTag.create!(id: 6, prompt: Prompt.find(6), tag: Tag.find(5))
+PromptTag.create!(id: 7, prompt: Prompt.find(7), tag: Tag.find(18))
+NoteTag.create!(id: 1, note: Note.find(1), tag: Tag.find(1))
+NoteTag.create!(id: 2, note: Note.find(1), tag: Tag.find(2))
+NoteTag.create!(id: 3, note: Note.find(2), tag: Tag.find(3))
+NoteTag.create!(id: 4, note: Note.find(2), tag: Tag.find(4))
+NoteTag.create!(id: 10, note: Note.find(5), tag: Tag.find(1))
+NoteTag.create!(id: 16, note: Note.find(8), tag: Tag.find(1))
+NoteTag.create!(id: 19, note: Note.find(6), tag: Tag.find(1))
+NoteTag.create!(id: 22, note: Note.find(9), tag: Tag.find(4))
+NoteTag.create!(id: 23, note: Note.find(9), tag: Tag.find(9))
+NoteTag.create!(id: 60, note: Note.find(34), tag: Tag.find(8))
+NoteTag.create!(id: 63, note: Note.find(3), tag: Tag.find(6))
+NoteTag.create!(id: 64, note: Note.find(37), tag: Tag.find(7))
+NoteTag.create!(id: 69, note: Note.find(40), tag: Tag.find(1))
+NoteTag.create!(id: 71, note: Note.find(42), tag: Tag.find(5))
+NoteTag.create!(id: 74, note: Note.find(43), tag: Tag.find(1))
+NoteTag.create!(id: 75, note: Note.find(44), tag: Tag.find(1))
+NoteTag.create!(id: 76, note: Note.find(45), tag: Tag.find(14))
+NoteTag.create!(id: 77, note: Note.find(46), tag: Tag.find(15))
+NoteTag.create!(id: 78, note: Note.find(46), tag: Tag.find(16))
+NoteTag.create!(id: 80, note: Note.find(47), tag: Tag.find(17))
+NoteTag.create!(id: 82, note: Note.find(48), tag: Tag.find(1))
+NoteTag.create!(id: 84, note: Note.find(49), tag: Tag.find(18))
+NoteTag.create!(id: 85, note: Note.find(50), tag: Tag.find(1))
+NoteTag.create!(id: 87, note: Note.find(36), tag: Tag.find(13))
+Reference.create!(id: 1, referencable: Note.find(1), click_count: 3)
+Reference.create!(id: 2, referencable: Note.find(2), click_count: 2)
+Reference.create!(id: 4, referencable: Note.find(3), click_count: 17)
+Reference.create!(id: 6, referencable: Note.find(5), click_count: 3)
+Reference.create!(id: 7, referencable: Prompt.find(2), click_count: 9)
+Reference.create!(id: 8, referencable: Note.find(6), click_count: 7)
+Reference.create!(id: 10, referencable: Note.find(8), click_count: 6)
+Reference.create!(id: 11, referencable: Note.find(9), click_count: 8)
+Reference.create!(id: 40, referencable: Note.find(34), click_count: 1)
+Reference.create!(id: 42, referencable: Note.find(36), click_count: 0)
+Reference.create!(id: 43, referencable: Note.find(37), click_count: 0)
+Reference.create!(id: 44, referencable: Prompt.find(3), click_count: 0)
+Reference.create!(id: 48, referencable: Note.find(40), click_count: 0)
+Reference.create!(id: 50, referencable: Prompt.find(6), click_count: 0)
+Reference.create!(id: 52, referencable: Note.find(42), click_count: 0)
+Reference.create!(id: 53, referencable: Note.find(43), click_count: 1)
+Reference.create!(id: 54, referencable: Note.find(44), click_count: 0)
+Reference.create!(id: 55, referencable: Note.find(45), click_count: 0)
+Reference.create!(id: 56, referencable: Note.find(46), click_count: 0)
+Reference.create!(id: 57, referencable: Note.find(47), click_count: 0)
+Reference.create!(id: 58, referencable: Note.find(48), click_count: 0)
+Reference.create!(id: 59, referencable: Prompt.find(7), click_count: 0)
+Reference.create!(id: 60, referencable: Note.find(49), click_count: 0)
+Reference.create!(id: 61, referencable: Note.find(50), click_count: 0)
