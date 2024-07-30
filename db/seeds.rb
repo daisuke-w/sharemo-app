@@ -7,11 +7,12 @@ Note.delete_all
 Reference.delete_all
 Tag.delete_all
 User.delete_all
-User.create!(id: 1, nickname: 'testuser1', email: 'test_user1@test.com', password: '$2a$12$v7VrWBScRrk9xhKRGSIUquIHmWMwPzK78E3R0n8PqXR6PoJSGrspG', group_id: 2)
-User.create!(id: 2, nickname: 'testuser2', email: 'test_user2@test.com', password: '$2a$12$2FGo8UU33TM9XzenS68PNubmEWW3t7QgAIjS6CfNppMaAlPgHx4fe', group_id: 2)
-User.create!(id: 3, nickname: 'testuser3', email: 'test_user3@test.com', password: '$2a$12$x/NHToGrWzOwjW2qKVxKm.t.rZeouPAuZyc72CMI2C0..7pYtkYuG', group_id: 2)
-User.create!(id: 4, nickname: 'testuser4', email: 'test_user4@test.com', password: '$2a$12$Rso0x0zxkb/aY9kkaF0TXe/3JG/Yqd7oBekUeCB2Ud190Q/cH3xOO', group_id: 3)
-User.create!(id: 5, nickname: 'testuser5', email: 'test_user5@test.com', password: '$2a$12$8pmLSX48/zXywk8KeSnnPexR/n7jG2iY9U3o.ThLuX79RhGhxI5lO', group_id: 3)
+# PWは登録した後で直接編集する必要あり
+User.create!(id: 1, nickname: 'testuser1', email: 'test_user1@test.com', password: 'xxxxxxxxx', group_id: 2)
+User.create!(id: 2, nickname: 'testuser2', email: 'test_user2@test.com', password: 'xxxxxxxxx', group_id: 2)
+User.create!(id: 3, nickname: 'testuser3', email: 'test_user3@test.com', password: 'xxxxxxxxx', group_id: 2)
+User.create!(id: 4, nickname: 'testuser4', email: 'test_user4@test.com', password: 'xxxxxxxxx', group_id: 3)
+User.create!(id: 5, nickname: 'testuser5', email: 'test_user5@test.com', password: 'xxxxxxxxx', group_id: 3)
 Tag.create!(id: 1, tag_name: 'ruby', color_code: 8)
 Tag.create!(id: 2, tag_name: 'Gem', color_code: 10)
 Tag.create!(id: 3, tag_name: 'html', color_code: 10)
