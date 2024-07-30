@@ -17,16 +17,14 @@ https://sharemo-app.onrender.com
 # テスト用アカウント
 - Basic認証ID :admin
 - Basic認証PW :3939
-- テストユーザー1
+- テストユーザー(group：TestGroup A)
+- ユーザー1~3
   - Email：test_user1@test.com
   - PW：testuser1
-  - group：TestGroup A
-  - Email：test_user2@test.com
-  - PW：testuser2
-  - group：TestGroup A
-  - Email：test_user3@test.com
-  - PW：testuser3
-  - group：TestGroup B
+- テストユーザー(group：TestGroup B)
+- ユーザー4~5
+  - Email：test_user4@test.com
+  - PW：testuser4
 
 # 利用方法
 ### ユーザー登録・ログイン・ログアウト
