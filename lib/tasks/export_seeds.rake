@@ -21,12 +21,12 @@ namespace :db do
 
         # User
         # PWは登録した後で直接編集する必要あり
-        file.write("# PWは登録した後で直接編集する必要あり")
+        file.write("# PWは登録した後で直接編集する必要あり\n")
         User.find_each do |user|
           nickname = user.nickname.gsub("'", "\\\\'")
           email = user.email.gsub("'", "\\\\'")
           encrypted_password = user.encrypted_password.gsub("'", "\\\\'")
-          file.write("User.create!(id: #{user.id}, nickname: '#{nickname}', email: '#{email}', password: '#{encrypted_password}', group_id: #{user.group_id})\n")
+          file.write("User.create!(id: #{user.id}, nickname: '#{nickname}', email: '#{email}', password: 'xxxxxxxxx', group_id: #{user.group_id})\n")
         end
 
         # Tag
