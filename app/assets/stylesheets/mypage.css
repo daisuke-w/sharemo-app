@@ -59,6 +59,7 @@
 .mypage-main-content {
   flex-grow: 1;
   padding: 15px;
+  width: calc(100vw - 280px);
 }
 
 .content-info .row > * {
