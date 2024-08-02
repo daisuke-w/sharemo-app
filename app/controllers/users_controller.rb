@@ -29,11 +29,11 @@ class UsersController < ApplicationController
   end
 
   def notes_info
-    render partial: 'shared/notes_info', locals: { notes: @notes }
+    render partial: 'shared/notes_info', locals: { public_notes: @public_notes, private_notes: @private_notes }
   end
 
   def prompts_info
-    render partial: 'shared/prompts_info', locals: { prompts: @prompts }
+    render partial: 'shared/prompts_info', locals: { public_prompts: @public_prompts, private_prompts: @private_prompts }
   end
 
   private
@@ -51,8 +51,10 @@ class UsersController < ApplicationController
     user_information = user_info_service.user_information
     @note_information = user_information[:note_information]
     @prompt_information = user_information[:prompt_information]
-    @notes = user_information[:notes]
-    @prompts = user_information[:prompts]
+    @public_notes = user_information[:public_notes]
+    @private_notes = user_information[:private_notes]
+    @public_prompts = user_information[:public_prompts]
+    @private_prompts = user_information[:private_prompts]
     @notes_by_category = user_information[:notes_by_category]
     @prompts_by_category = user_information[:prompts_by_category]
   end

@@ -1,12 +1,9 @@
 <div class="note-info-section">
-  <% public_notes = notes.select { |note| note.is_public } %>
-  <% private_notes = notes.select { |note| !note.is_public } %>
-
   <% if public_notes.any? %>
     <h3>Public Notes</h3>
     <div class="notes-list">
       <% public_notes.each do |note| %>
-        <%= render partial: 'shared/note_boxes', locals: { object: note } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: note, page: 'mypage' } %>
       <% end %>
     </div>
   <% end %>
@@ -15,7 +12,7 @@
     <h3>Private Notes</h3>
     <div class="notes-list">
       <% private_notes.each do |note| %>
-        <%= render partial: 'shared/note_boxes', locals: { object: note } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: note, page: 'mypage' } %>
       <% end %>
     </div>
   <% end %>

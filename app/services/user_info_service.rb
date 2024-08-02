@@ -9,8 +9,10 @@ class UserInfoService
     {
       note_information:,    # ノートに関する情報
       prompt_information:,  # プロンプトに関する情報
-      notes:,               # ユーザーの保有するノート一覧
-      prompts:,             # ユーザーの保有するプロンプト一覧
+      public_notes:,        # ユーザーの保有する公開ノート一覧
+      private_notes:,       # ユーザーの保有する非公開ノート一覧
+      public_prompts:,      # ユーザーの保有する公開プロンプト一覧
+      private_prompts:,     # ユーザーの保有する非公開プロンプト一覧
       notes_by_category:,   # カテゴリ別ノート一覧
       prompts_by_category:  # カテゴリ別プロンプト一覧
     }
@@ -38,14 +40,24 @@ class UserInfoService
     }
   end
 
-  # ユーザーのノートを取得
-  def notes
-    @user.notes.order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
+  # ユーザーの公開ノートを取得
+  def public_notes
+    @user.notes.where(is_public: true).order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
   end
 
-  # ユーザーのプロンプトを取得
-  def prompts
-    @user.prompts.order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
+  # ユーザーの非公開ノートを取得
+  def private_notes
+    @user.notes.where(is_public: false).order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
+  end
+
+  # ユーザーの公開プロンプトを取得
+  def public_prompts
+    @user.prompts.where(is_public: true).order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
+  end
+
+  # ユーザーの非公開プロンプトを取得
+  def private_prompts
+    @user.prompts.where(is_public: false).order(Arel.sql('GREATEST(created_at, updated_at) DESC'))
   end
 
   # カテゴリ別にユーザーのノートをグループ化して取得
