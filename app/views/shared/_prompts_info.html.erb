@@ -1,12 +1,9 @@
 <div class="prompt-info-section">
-  <% public_prompts = prompts.select { |prompt| prompt.is_public } %>
-  <% private_prompts = prompts.select { |prompt| !prompt.is_public } %>
-
   <% if public_prompts.any? %>
     <h3>Public Prompts</h3>
     <div class="prompts-list">
       <% public_prompts.each do |prompt| %>
-        <%= render partial: 'shared/note_boxes', locals: { object: prompt } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: prompt, page: 'mypage' } %>
       <% end %>
     </div>
   <% end %>
@@ -15,7 +12,7 @@
     <h3>Private Prompts</h3>
     <div class="prompts-list">
       <% private_prompts.each do |prompt| %>
-        <%= render partial: 'shared/note_boxes', locals: { object: prompt } %>
+        <%= render partial: 'shared/note_boxes', locals: { object: prompt, page: 'mypage' } %>
       <% end %>
     </div>
   <% end %>

@@ -1,4 +1,4 @@
-<div class="note-box">
+<div class="<%= "#{page}_note-box" %>">
   <div class="header">
     <div class="category"><%= object.category[:name] %></div>
     <div class="type" data-obj="<%= object&.is_a?(Note) ? 'Note' : 'Prompt' %>">

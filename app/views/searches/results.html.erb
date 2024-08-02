@@ -6,7 +6,7 @@
   <div class="notes-container">
     <% @objects.each do |object| %>
       <% if object.is_public %>
-        <%= render partial: 'shared/note_boxes', locals: { object: } %>
+        <%= render partial: 'shared/note_boxes', locals: { object:, page: 'index' } %>
       <% end %>
     <% end %>
   </div>
