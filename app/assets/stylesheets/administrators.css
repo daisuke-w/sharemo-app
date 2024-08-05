@@ -1,0 +1,122 @@
+.admin-header {
+  background-color: #f9f9f9;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-header h3 {
+  margin-left: 1rem;
+}
+
+/* 全体を中央に配置するコンテナ */
+.admin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* テーブルのスタイル */
+table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ヘッダーとセルのスタイル */
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 行ホバー効果を削除 */
+tbody tr:hover {
+  background-color: #fff;
+}
+
+/* アコーディオンのボタンスタイル */
+.accordion-button {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.accordion-button.active, .accordion-button:hover {
+  background-color: #e2e2e2;
+  border-color: #ccc;
+}
+
+/* アコーディオンコンテンツのスタイル */
+.accordion-content {
+  display: none;
+  border-top: none;
+}
+
+.accordion-content td {
+  padding: 8px 15px;
+  border: none;
+}
+
+.accordion-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.accordion-content th, .accordion-content td {
+  border: none;
+}
+
+/* 所有者変更ボタンのスタイル */
+.change-owner {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.change-owner:hover {
+  background-color: #0056b3;
+}
+
+.select-owner {
+  margin-top: 10px;
+}
+
+.select-owner select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.select-owner option {
+  padding: 10px;
+}
