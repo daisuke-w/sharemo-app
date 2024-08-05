@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  devise_for :admins
   root 'tops#index'
 
   resources :notes do
@@ -27,6 +28,13 @@ Rails.application.routes.draw do
       get 'basic_info', to: 'users#basic_info'
       get 'notes_info', to: 'users#notes_info'
       get 'prompts_info', to: 'users#prompts_info'
+    end
+  end
+
+  resources :administrators, only: [:index] do
+    member do
+      patch :update_owner
+      delete :destroy_user
     end
   end
 end
