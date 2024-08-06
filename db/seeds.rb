@@ -65,7 +65,7 @@ Note.create!(id: 1, user: User.find(1), title: 'Redcarpet実装に関して', co
 ##### extensions
 * Markdown処理に追加の機能や構文を提供するための拡張機能の設定
 	* autolink: 自動的にURLやメールアドレスをリンクに変換する機能を有効にするかどうかを指定
-	* uperscript: 上付き文字（例: x²）をサポートするかどうかを指定', category_id: 3, is_public: true, group_id: 2)
+	* uperscript: 上付き文字（例: x²）をサポートするかどうかを指定', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 2, user: User.find(1), title: 'rel, target属性について', content: '* rel属性: rel: \'nofollow\'
 	* リンクの関係性を示す nofollowは、検索エンジンのクローラーに対してリンクをたどらないように指示するための属性
 	* リンクを経由したページへのSEO効果が減少する
@@ -73,14 +73,14 @@ Note.create!(id: 2, user: User.find(1), title: 'rel, target属性について', 
 &nbsp;
 * target属性: target: "\_blank"
 	* リンクを開く際のターゲットウィンドウを指定
-	* \_blankを指定すると、リンクを新しいタブやウィンドウで開く', category_id: 3, is_public: true, group_id: 2)
+	* \_blankを指定すると、リンクを新しいタブやウィンドウで開く', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 3, user: User.find(1), title: 'GithubのソースをVSCodeのようにして見る方法', content: '* Git hubにアクセスしてURLを変更するだけでVSCodeのようにソースコードを見ることができる
 	* やり方
 	* 例)**1s**をつけるだけ
 		* github.com/oivoodoo/devisemasquerade
 		* github**1s**.com/oivoodoo/devise_masquerade
 		
-', category_id: 3, is_public: true, group_id: 2)
+', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 5, user: User.find(2), title: 'Ruby on Railsとは', content: '#### Ruby on Railsの特徴
 * 設計ルールが決まっている為シンプルに記述できる
 * 開発補助ツールが豊富
@@ -98,7 +98,7 @@ Note.create!(id: 5, user: User.find(2), title: 'Ruby on Railsとは', content: '
 * データベースを作成する
 
 ##### rails db:drop コマンド
-* データベースを削除する', category_id: 2, is_public: true, group_id: 2)
+* データベースを削除する', category_id: 2, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 6, user: User.find(2), title: 'text_areaに入力した改行を反映させて表示', content: '#### 入力
 * form_withヘルパーを使用してテキストエリア入力欄を作成
 
@@ -120,7 +120,7 @@ Note.create!(id: 6, user: User.find(2), title: 'text_areaに入力した改行�
 ```ruby
 <%= simple_format(current_user.profile) %>
 ```
-', category_id: 3, is_public: true, group_id: 2)
+', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 8, user: User.find(2), title: 'モデル、ヘルパー、サービスの使い分け', content: 'コントローラーにメソッドが多くなり肥大化する場合、それらをコントローラーから分離することは一般的に推奨されている。
 
 ##### モデル
@@ -133,7 +133,7 @@ Note.create!(id: 8, user: User.find(2), title: 'モデル、ヘルパー、サ�
 
 ##### サービス
 * ビジネスロジックやデータ操作を集約するのに最適な場所。
-* コントローラーで使用する複数のメソッドをひとまとめにして、より再利用可能な形で管理することができる。', category_id: 3, is_public: true, group_id: 2)
+* コントローラーで使用する複数のメソッドをひとまとめにして、より再利用可能な形で管理することができる。', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 9, user: User.find(1), title: 'cssとscssの違いについて', content: '#### CSS (Cascading Style Sheets)
 * 基本的なスタイルシート言語：HTML要素のスタイルを指定するための言語。
 * シンプルな構文：CSSはシンプルで、セレクタとプロパティのペアでスタイルを指定。
@@ -216,7 +216,7 @@ h1 {
 ```
 ##### 使い分けポイント
 * ミックスインはパラメータを使って柔軟にスタイルを生成する際に適している。
-* 継承はスタイルの共通化と一貫性を保ちたい場合に適している。', category_id: 3, is_public: true, group_id: 2)
+* 継承はスタイルの共通化と一貫性を保ちたい場合に適している。', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 34, user: User.find(3), title: '容量確認_ChatGPT返答', content: '### Linuxでフォルダ容量を特定して削除するプロセス
 
 1. **ディスク使用量の確認**
@@ -303,7 +303,7 @@ Note.create!(id: 34, user: User.find(3), title: '容量確認_ChatGPT返答', co
    /dev/sda1       100G   57G   43G  57% /
    /dev/sda2       200G   50G  150G  25% /home
 	 ```
-	 /dev/sda1の使用量が減少していることが確認できます。', category_id: 12, is_public: true, group_id: 2)
+	 /dev/sda1の使用量が減少していることが確認できます。', category_id: 12, is_public: true, group_id: 2, prompt_id: Prompt.find(2))
 Note.create!(id: 36, user: User.find(1), title: 'Claude 3.5 Sonnet（クロード 3.5 ソネット）', content: '#### Claude 3.5 Sonnet （クロード 3.5 ソネット）とは
 * 2024年6月に登場した最新のAIモデル
 * Anthropicが開発
@@ -324,8 +324,8 @@ Claude 3.5 Sonnetは、ブラウザ・アプリ版共に無料で利用するこ
 
 #### Claude 3.5 Sonnet URL
 https://www.anthropic.com/news/claude-3-5-sonnet
-', category_id: 8, is_public: false, group_id: 2)
-Note.create!(id: 37, user: User.find(4), title: 'TEST', content: 'test', category_id: 6, is_public: true, group_id: 3)
+', category_id: 8, is_public: false, group_id: 2, prompt_id: nil)
+Note.create!(id: 37, user: User.find(4), title: 'TEST', content: 'test', category_id: 6, is_public: true, group_id: 3, prompt_id: nil)
 Note.create!(id: 40, user: User.find(2), title: 'プログラムの記述方法', content: '### 以下は全て同じ処理になる
 
 ###### do ... endを利用した記述
@@ -347,7 +347,7 @@ do ... end は処理の中身が長いブロックに使われる
 @lists.select(&:hoge?)
 ```
 シンタックスシュガーはコードをより簡潔で読みやすくするために使われる
-', category_id: 2, is_public: true, group_id: 2)
+', category_id: 2, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 42, user: User.find(1), title: 'DB設計の指示_ChatGPT返答', content: '## Facebookを題材にしたデータベース設計
 
 ### users テーブル
@@ -369,7 +369,7 @@ Note.create!(id: 42, user: User.find(1), title: 'DB設計の指示_ChatGPT返答
 | user_id             | BIGINT          | NOT NULL, FOREIGN KEY (users.id)    | 
 | content             | TEXT            | NOT NULL                             | 
 | created_at          | TIMESTAMP       | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | 
-| updated_at          | TIMESTAMP       | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | ', category_id: 8, is_public: true, group_id: 2)
+| updated_at          | TIMESTAMP       | NOT NULL, DEFAULT CURRENT_TIMESTAMP  | ', category_id: 8, is_public: true, group_id: 2, prompt_id: Prompt.find(6))
 Note.create!(id: 43, user: User.find(1), title: 'rails dbコマンドについて', content: '#### データベースの作成
 ```bush
 rails db:create
@@ -421,7 +421,7 @@ rails db:drop → rails db:create → rails db:migrate → rails db:seed
 rails db:migrate:reset
 ```
 シードファイルは読み込まない
-rails db:drop → rails db:create → rails db:migrate', category_id: 5, is_public: true, group_id: 2)
+rails db:drop → rails db:create → rails db:migrate', category_id: 5, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 44, user: User.find(1), title: '投稿時刻の表示を日本時刻に変更する方法', content: '### 投稿時刻の表示を日本時刻に変更する方法
 * 時刻の設定は、Railsのapplication.rbという設定ファイルに以下を追記する
 
@@ -450,7 +450,7 @@ ja:
 
 ```ruby
 <%= l hoge.created_at %>
-```', category_id: 3, is_public: true, group_id: 2)
+```', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 45, user: User.find(1), title: 'Javascriptロードイベントについて', content: '## ロードの種類と用途
 
 ```javascript
@@ -492,11 +492,11 @@ Turboを使っているアプリで、ページの内容が変わるたびに動
 ページを離れた直後に起こる
 - **使用目的**  
 ページを離れた後に何かを実行したいときに使う  
-例えば、ユーザーの行動を追跡するときなど', category_id: 2, is_public: true, group_id: 2)
+例えば、ユーザーの行動を追跡するときなど', category_id: 2, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 46, user: User.find(1), title: 'WindowsOSバージョン調べ方', content: '1. windowsボタンを押す
 2. 「winver」と入力しenterキーを押す
 3. windows OSのバージョンとビルド番号を確認
-「Windowsのバージョン情報」が表示される為確認', category_id: 12, is_public: true, group_id: 2)
+「Windowsのバージョン情報」が表示される為確認', category_id: 12, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 47, user: User.find(1), title: 'WSL有効化', content: '#### 想定バージョン
 Windows10、もしくはWindows11
 
@@ -536,7 +536,7 @@ wsl --status
 ```
 wsl --install Ubuntu
 ```
-５．起動したUbuntuでユーザー名とパスワードを入力して Enter', category_id: 3, is_public: true, group_id: 2)
+５．起動したUbuntuでユーザー名とパスワードを入力して Enter', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 48, user: User.find(2), title: 'ルーティングの設定', content: '#### ルーティングの記述方法
 ##### 基本的な記述
 
@@ -612,7 +612,7 @@ rails routes
 ```bush
 Prefix           Verb    URI                                 Pattern
 search_hoge      GET    /hoges/search(.:format)       hoges#search
-```', category_id: 3, is_public: true, group_id: 2)
+```', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 Note.create!(id: 49, user: User.find(2), title: 'リード文作成指示_ChatGPT返答', content: '```
 以下のインプットからコンテンツを想像しリード文と説明文を考えてください。
 
@@ -633,7 +633,7 @@ Note.create!(id: 49, user: User.find(2), title: 'リード文作成指示_ChatGP
 シンプルで使いやすい学習整理ツール - 効果的に学習内容を管理し、知識を最大限に活用しましょう。
 
 コンテンツ説明文:
-このツールは、学習内容を効率的に整理するための直感的なインターフェースを提供します。マークダウン形式での入力に対応し、余計な機能を省いたシンプルな設計で操作も簡単です。メモは大きく分けてNoteとPromptの2種類から作成でき、カテゴリーやタグで細かく分類することができます。これにより、学習内容を体系的に整理し、必要な情報にすばやくアクセスすることが可能です。', category_id: 12, is_public: true, group_id: 2)
+このツールは、学習内容を効率的に整理するための直感的なインターフェースを提供します。マークダウン形式での入力に対応し、余計な機能を省いたシンプルな設計で操作も簡単です。メモは大きく分けてNoteとPromptの2種類から作成でき、カテゴリーやタグで細かく分類することができます。これにより、学習内容を体系的に整理し、必要な情報にすばやくアクセスすることが可能です。', category_id: 12, is_public: true, group_id: 2, prompt_id: Prompt.find(7))
 Note.create!(id: 50, user: User.find(2), title: 'Ruby on Rails の基本理念', content: '### DRY(Don’t Repeat Yourself)
 * 「同じ情報を繰り返し定義しない」
 * 可読性の向上や、コード量を減らすことによりアプリケーションの動作が早くなる
@@ -662,7 +662,7 @@ Note.create!(id: 50, user: User.find(2), title: 'Ruby on Rails の基本理念',
 
 
 
-', category_id: 3, is_public: true, group_id: 2)
+', category_id: 3, is_public: true, group_id: 2, prompt_id: nil)
 PromptTag.create!(id: 2, prompt: Prompt.find(2), tag: Tag.find(8))
 PromptTag.create!(id: 3, prompt: Prompt.find(3), tag: Tag.find(7))
 PromptTag.create!(id: 6, prompt: Prompt.find(6), tag: Tag.find(5))
