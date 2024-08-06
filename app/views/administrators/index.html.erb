@@ -1,0 +1,84 @@
+<% content_for :additional_stylesheets do %>
+  <%= stylesheet_link_tag 'administrators', media: 'all' %>
+<% end %>
+
+<% content_for :additional_javascripts do %>
+  <%= javascript_include_tag 'administrators', 'data-turbo-track': 'reload' %>
+<% end %>
+
+<% if admin_signed_in? %>
+  <div class="admin-header text-end">
+    <h3>ユーザー管理画面</h3>
+    <%= link_to 'Logout', destroy_admin_session_path, data: { turbo_method: :delete }, class: 'btn btn-primary me-3' %>
+  </div>
+<% end %>
+<div class="admin-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Detail</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><button class="accordion-button" data-user-id="<%= user.id %>">Detail</button></td>
+          <td><%= link_to 'Delete',
+                  destroy_user_administrator_path(user),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "所有者の変更が済んでいない場Memoも削除されます。\n本当に削除してもよろしいですか?" },
+                  class: 'btn btn-danger custom-btn'
+              %></td>
+        </tr>
+        <tr class="accordion-content" id="accordion-<%= user.id %>">
+          <td colspan="3">
+            <h3>Owned Memo</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Owner</th>
+                  <th>New Owner</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% user.notes.each_with_index do |note, index| %>
+                  <tr>
+                    <td><%= note.title %></td>
+                    <% if index == 0 %>
+                      <td rowspan="<%= user.notes.count + user.prompts.count %>">
+                        <%= user.email %>
+                      </td>
+                      <td rowspan="<%= user.notes.count + user.prompts.count %>">
+                        <select id="owner-select-<%= user.id %>">
+                          <option value="">---</option>
+                          <% @users.each do |owner| %>
+                            <% if owner.group == user.group && owner != user %>
+                              <option value="<%= owner.id %>"><%= owner.email %></option>
+                            <% end %>
+                          <% end %>
+                        </select>
+                      </td>
+                      <td rowspan="<%= user.notes.count + user.prompts.count %>">
+                        <button class="change-owner" data-user-id="<%= user.id %>">Update</button>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+                <% user.prompts.each do |prompt| %>
+                  <tr>
+                    <td><%= prompt.title %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
