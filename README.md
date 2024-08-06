@@ -35,6 +35,9 @@ https://sharemo-app.onrender.com
 ![new_prompt](https://github.com/user-attachments/assets/a3527af4-62ec-4851-8730-144cd7118ddb)
 ### Promptに紐づくNoteの作成
 ![new_note_from_prompt](https://github.com/user-attachments/assets/1849c0bd-0b26-4efd-a802-6ff33c0d38d3)
+### ユーザー管理画面
+![admin](https://github.com/user-attachments/assets/6a351b48-32da-454a-928b-0782fc5f4fe1)
+- 管理者はコンソールから若しくは直接DBに登録する想定
 
 # UIデザイン
 [![Image from Gyazo](https://i.gyazo.com/8f3526d23c70e4c4456ace9ed566dbde.png)](https://gyazo.com/8f3526d23c70e4c4456ace9ed566dbde)
@@ -154,6 +157,13 @@ https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TL
 
 - belongs_to :referencable, polymorphic: true
 
+## admins テーブル
+
+| Column             | LogicName        | Type       | Options                        |
+| ------------------ | ---------------- | ---------- | ------------------------------ |
+| email              | メールアドレス    | string     | null: false, unique: true      |
+| encrypted_password | パスワード        | string     | null: false                    |
+
 # 開発環境
 - フロントエンド
   - HTML, CSS, JavaScript
@@ -168,7 +178,7 @@ https://docs.google.com/spreadsheets/d/1DttmsgOMtc3hFzurpudnPFK2eH6DfNup8ubPt4TL
 - 開発途中で気になった点の改修  
   https://github.com/daisuke-w/sharemo-app/issues
 - 企業内で利用する場合は組織図等と紐づけて認証を行う機能  
-  - 現在はymlファイルにグループを記述している
-- ユーザー管理機能
-  - 管理者は不要ユーザーを削除できる機能
-  - 管理者はMemoの所有権を変更できる機能
+  - 現在はymlファイルにグループを記述している  
+- ~~ユーザー管理機能~~ (2024/08/06 実装済み)  
+  - ~~管理者は不要ユーザーを削除できる機能~~  
+  - ~~管理者はMemoの所有権を変更できる機能~~  
