@@ -1,6 +1,11 @@
 <% content_for :additional_stylesheets do %>
   <%= stylesheet_link_tag 'administrators', media: 'all' %>
 <% end %>
+
+<% content_for :additional_javascripts do %>
+  <%= javascript_include_tag 'administrators', 'data-turbo-track': 'reload' %>
+<% end %>
+
 <% if admin_signed_in? %>
   <div class="admin-header text-end">
     <h3>ユーザー管理画面</h3>

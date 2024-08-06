@@ -7,7 +7,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!-- application.htmlのみ適応させるCSS、JS -->
     <%= yield :additional_stylesheets %>
+    <%= yield :additional_javascripts %>
     <%= javascript_importmap_tags %>
     <!-- EasyMDEのCSSを追加 -->
     <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
@@ -57,6 +59,7 @@
         </div>
       </footer>
     <% else %>
+      <!-- application.htmlには共通部分を表示しない -->
       <%= yield %>
     <% end %>
     <!-- EasyMDEのJSを追加 -->
