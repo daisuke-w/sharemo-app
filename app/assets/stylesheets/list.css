@@ -32,6 +32,7 @@
 .index_note-box:hover {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .header {
@@ -192,22 +193,6 @@
   min-width: 200px;
 }
 
-@media (max-width: 768px) {
-  .search-input-group {
-    width: 100%;
-  }
-
-  .filter-section {
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .form-group {
-    width: 100%;
-  }
-}
-
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border: solid #ced4da 1px;
 }
@@ -318,4 +303,31 @@
 
 .first, .last {
   display: none;
+}
+
+/* スマホ向けのスタイル調整 */
+@media (max-width: 768px) {
+  .search-input-group {
+    width: 100%;
+  }
+
+  .filter-section {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .notes-container {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .index_note-box {
+    margin: 20px -70px 20px 10px;
+  }
 }
