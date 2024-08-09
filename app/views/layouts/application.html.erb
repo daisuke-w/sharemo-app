@@ -22,7 +22,7 @@
   <body>
     <% unless controller.controller_name == 'administrators' %>
       <header class="d-flex flex-wrap align-items-center justify-content-between py-3 border-bottom fixed-header">
-        <div class="col-6 col-md-3 ms-3 mb-2 mb-md-0 d-flex align-items-center">
+        <div class="col-4 col-md-3 ms-3 mb-2 mb-md-0 d-flex align-items-center">
           <%= link_to image_tag('logo.png', alt: 'Logo', class: 'logo'), '/' %>
         </div>
 
@@ -44,7 +44,7 @@
             </ul>
           </div>
         <% else %>
-          <div class="col-md-3 text-end">
+          <div class="col-6 col-md-3 text-end">
             <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-primary me-2' %>
             <%= link_to 'Signup', new_user_registration_path, class: 'btn btn-primary me-3' %>
           </div>

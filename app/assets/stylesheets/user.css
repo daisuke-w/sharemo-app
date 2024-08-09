@@ -149,3 +149,41 @@
   width: 100%;
   padding: 0.5rem 0.375rem;
 }
+
+/* モバイルデバイス向けのスタイル調整 */
+@media (max-width: 768px) {
+  .account-page .account-page__inner .account-page__inner--left, 
+  .account-page .account-page__inner .account-page__inner--right {
+    float: none;
+    width: 100%;
+  }
+
+  .account-page .account-page__inner {
+    padding: 20px;
+    width: 100%;
+  }
+
+  .account-page .account-page__header h2 {
+    font-size: 24px;
+  }
+
+  .account-page .field .field-label {
+    font-size: 13px;
+  }
+
+  .account-page .field .field-input input,
+  .account-page .field .field-input textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .account-page .btn {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .account-page input[type=submit] {
+    height: 40px;
+    font-size: 16px;
+  }
+}
