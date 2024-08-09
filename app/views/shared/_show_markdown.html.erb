@@ -1,4 +1,4 @@
-<div class="custom-field">
+<div class="custom-field responsive-field">
   <h2><%= object.title %></h2>
   <div class="informative"
         data-reference-id="<%= object.reference&.id %>"
@@ -9,7 +9,7 @@
   </div>
   <div class="button-group">
     <% if object.is_a?(Prompt) %>
-      <%= link_to 'New Note from Prompt', new_prompt_note_path(object), class: 'btn btn-secondary custom-btn' %>
+      <%= link_to 'NewNote from Prompt', new_prompt_note_path(object), class: 'btn btn-secondary custom-btn' %>
     <% end %>
 
     <% if user_signed_in? && object.user == current_user %>
