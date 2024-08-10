@@ -137,3 +137,14 @@ td:empty::before {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
+
+/* スマホ表示のレイアウト調整 */
+@media (max-width: 768px) {
+  .mypage-side-bar {
+    width: 100%;
+  }
+
+  .mypage-main-content {
+    width: 100%;
+  }
+}

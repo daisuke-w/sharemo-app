@@ -176,3 +176,47 @@ table, th, td {
 th {
   background-color: #eefffc;
 }
+
+.markdown-preview table:not([class]) {
+  margin-bottom: 10px;
+}
+
+.markdown-preview table:not([class]) td, 
+.markdown-preview table:not([class]) th {
+  border: 1px solid #ddd;
+}
+
+/* スマホ画面用のメディアクエリ */
+@media (max-width: 768px) {
+  .highlight-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .button-group a {
+    font-size: 12px;
+  }
+
+  .responsive-field {
+    flex-direction: column;
+  }
+
+  .markdown-preview table:not([class]) {
+    margin-bottom: 10px;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .markdown-preview table:not([class]) td, 
+  .markdown-preview table:not([class]) th {
+    padding: 5px;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+  }
+  
+  .markdown-preview table:not([class]) tr {
+    display: table-row;
+    width: 100%;
+    table-layout: fixed;
+  }
+}

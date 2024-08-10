@@ -44,7 +44,7 @@
   max-width: 100%;
   max-height: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  padding: 20px;
   margin: 10px 0;
 }
 
@@ -83,4 +83,32 @@
 
 .contents-margin-top {
   margin-top: 88px;
+}
+
+
+/* モバイルデバイス向けのスタイル調整 */
+@media (max-width: 768px) {
+  .introduction-heading {
+    font-size: 1.45rem;
+  }
+
+  .introduction-text {
+    padding: 20px;
+  }
+
+  .introduction-gif {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .d-flex {
+    display: block;
+    text-align: center;
+  }
+
+  .btn--circle {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
 }

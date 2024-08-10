@@ -111,3 +111,27 @@
 .link-body-emphasis:hover {
   text-decoration: underline;
 }
+
+
+/* スマホ画面用のメディアクエリ */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .side-bar {
+    width: 100%;
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  .markdown-area {
+    width: 100%;
+  }
+
+  .sidebar-footer {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+  }
+}
