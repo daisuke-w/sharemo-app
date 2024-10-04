@@ -11,9 +11,6 @@ Memoを整理して仲間内で共有できるアプリケーションです。
 しかし、NotionやEvernoteなどのツールは機能が多く初学者が使いこなすのにはハードルが高いと感じました。  
 そこで、本アプリケーションを作成しました。
 
-# URL
-https://sharemo-app.onrender.com
-
 # テスト用アカウント
 - Basic認証ID :admin
 - Basic認証PW :3939
