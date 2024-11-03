@@ -11,18 +11,6 @@ Memoを整理して仲間内で共有できるアプリケーションです。
 しかし、NotionやEvernoteなどのツールは機能が多く初学者が使いこなすのにはハードルが高いと感じました。  
 そこで、本アプリケーションを作成しました。
 
-# テスト用アカウント
-- Basic認証ID :admin
-- Basic認証PW :3939
-- テストユーザー(group：TestGroup A)
-- ユーザー1~3
-  - Email：test_user1@test.com
-  - PW：testuser1
-- テストユーザー(group：TestGroup B)
-- ユーザー4~5
-  - Email：test_user4@test.com
-  - PW：testuser4
-
 # 利用方法
 ### ユーザー登録・ログイン・ログアウト
 ![sign_up](https://github.com/user-attachments/assets/8c675ccf-8c42-4750-8c0c-d4ad5bfe84f6)
